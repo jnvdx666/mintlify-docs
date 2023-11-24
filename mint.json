@@ -1,28 +1,73 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Rebel Tickets",
+  "name": "Starter Kit",
+  "logo": {
+    "dark": "/logo/dark.svg",
+    "light": "/logo/light.svg"
+  },
   "favicon": "/favicon.svg",
   "colors": {
-    "primary": "#5F33D6FF",
-    "light": "#A288E7FF",
-    "dark": "#5F33D6FF",
+    "primary": "#0D9373",
+    "light": "#07C983",
+    "dark": "#0D9373",
     "anchors": {
-      "from": "#5F33D6FF",
-      "to": "#A288E7FF"
+      "from": "#0D9373",
+      "to": "#07C983"
     }
   },
+  "topbarLinks": [
+    {
+      "name": "Support",
+      "url": "mailto:hi@mintlify.com"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "Dashboard",
+    "url": "https://dashboard.mintlify.com"
+  },
+  "tabs": [
+    {
+      "name": "API Reference",
+      "url": "api-reference"
+    }
+  ],
+  "anchors": [
+    {
+      "name": "Documentation",
+      "icon": "book-open-cover",
+      "url": "https://mintlify.com/docs"
+    },
+    {
+      "name": "Community",
+      "icon": "slack",
+      "url": "https://mintlify.com/community"
+    },
+    {
+      "name": "Blog",
+      "icon": "newspaper",
+      "url": "https://mintlify.com/blog"
+    }
+  ],
   "navigation": [
     {
       "group": "Get Started",
-      "pages": ["introduction", "development"]
+      "pages": ["introduction", "quickstart", "development"]
     },
     {
-      "group": "Pages",
-      "pages": ["documentacion/admin-deny.mdx", "documentacion/search.mdx", "documentacion/notifications-send.mdx", "documentacion/[post].mdx", "documentacion/entradas.mdx", "documentacion/create.mdx", "documentacion/sitemap_xml.mdx", "documentacion/remove-name.mdx", "documentacion/uploaded-async-ticket.mdx", "documentacion/send-download-after-pay.mdx", "documentacion/_error.mdx", "documentacion/[person].mdx", "documentacion/admin-accept.mdx", "documentacion/logout.mdx", "documentacion/unreserve.mdx", "documentacion/_document.mdx", "documentacion/get-lowest-price.mdx", "documentacion/add-date.mdx", "documentacion/check-coincidences.mdx", "documentacion/no-stats.mdx", "documentacion/[ticket].mdx", "documentacion/[list].mdx", "documentacion/recover.mdx", "documentacion/update-picture.mdx", "documentacion/lugares.mdx", "documentacion/get.mdx", "documentacion/terms.mdx", "documentacion/index.mdx", "documentacion/admin-edit.mdx", "documentacion/download.mdx", "documentacion/moderation.mdx", "documentacion/delete-event.mdx", "documentacion/404.mdx", "documentacion/login.mdx", "documentacion/access.mdx", "documentacion/check.mdx", "documentacion/add-name.mdx", "documentacion/buy.mdx", "documentacion/opt-in.mdx", "documentacion/close.mdx", "documentacion/[profileext].mdx", "documentacion/[lista].mdx", "documentacion/discotecas.mdx", "documentacion/verify.mdx", "documentacion/sell.mdx", "documentacion/[city].mdx", "documentacion/FAQ.mdx", "documentacion/edit.mdx", "documentacion/_app.mdx", "documentacion/success.mdx", "documentacion/delete.mdx", "documentacion/profile.mdx", "documentacion/new.mdx", "documentacion/[ciudad].mdx", "documentacion/rrpps.mdx", "documentacion/sendgrid.mdx", "documentacion/upload.mdx", "documentacion/confirm.mdx", "documentacion/users.mdx", "documentacion/[chat].mdx", "documentacion/notifications-create.mdx", "documentacion/sso.mdx", "documentacion/add-bank-info.mdx", "documentacion/pr.mdx", "documentacion/manage.mdx", "documentacion/privacy.mdx"]
+      "group": "Essentials",
+      "pages": ["essentials/markdown", "essentials/code", "essentials/images", "essentials/settings", "essentials/navigation"]
     },
     {
       "group": "API Documentation",
       "pages": ["api-reference/introduction"]
+    },
+    {
+      "group": "Endpoint Examples",
+      "pages": [
+        "api-reference/endpoint/get",
+        "api-reference/endpoint/create",
+        "api-reference/endpoint/delete"
+      ]
     }
   ],
   "footerSocials": {
