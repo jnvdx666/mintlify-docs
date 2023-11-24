@@ -1,0 +1,25 @@
+
+
+---
+## Archivo: pages/api/people/admin-edit.jsx
+
+Este archivo contiene la lógica del endpoint de edición para administradores en la aplicación Rebel. Este endpoint se encarga de guardar y actualizar los datos de un artista en el sistema utilizando AWS Amplify DataStore.
+
+### Importaciones
+
+1. Se importa `DataStore` desde `@aws-amplify/datastore`. Es una función que permite interactuar con las bases de datos alojadas en AWS.
+2. Se importa el modelo `Performer` de la carpeta "models". Este modelo define la estructura de los datos de los artistas en la base de datos.
+3. Se importan `uuid` y `captureException` de sus respectivos paquetes. UUID se utiliza para generar identificadores únicos para cada artista y sentry es una herramienta de monitoreo de errores.
+
+### Funcionalidad principal
+
+El archivo expone una función anónima por defecto que se ejecuta cuando se realiza una solicitud HTTP a este endpoint. La función recibe dos argumentos: `req` y `res`, donde `req` representa la solicitud HTTP y `res` es la respuesta que enviará el servidor.
+
+La función comienza extrayendo ciertos valores del cuerpo de la solicitud (`artist`, `token` y `newitem`). Luego verifica si el valor de `token` coincide con una cadena predefinida. Si es así, procederá a realizar acciones según el valor de `newitem`:
+
+- Si `newitem` es verdadero, crea un nuevo objeto `Performer` con los datos proporcionados y lo guarda en DataStore.
+- Si `newitem` es falso, busca el registro existente del artista en DataStore utilizando su ID y luego crea una copia modificada de ese objeto con los nuevos datos proporcionados. Finalmente, guarda esta copia modificada en DataStore.
+
+Si no se cumple la condición de `token`, se lanza un error con el mensaje "Auth error". En cualquier caso, la función termina enviando una respuesta JSON al cliente con un código de estado que indica éxito o falla de la operación.
+
+En caso de que ocurra algún error durante la ejecución de la función, éste será capturado y registrado en Sentry antes de enviarse como respuesta al cliente con un código de estado 500.

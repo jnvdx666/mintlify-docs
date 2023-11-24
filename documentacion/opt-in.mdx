@@ -1,0 +1,32 @@
+
+
+```mdx
+# Archivo opt-in.jsx
+
+Este archivo contiene la lógica para agregar una nueva notificación de evento en el sistema. Se encarga de verificar si se cumplen las condiciones necesarias antes de crear la notificación y, en caso afirmativo, guarda la información en la base de datos utilizando AWS Amplify DataStore.
+
+## Importaciones principales
+
+- `DataStore` desde `@aws-amplify/datastore`: Utilizado para interactuar con la base de datos y realizar consultas o guardar nuevos elementos.
+- `DiscoNotification` e `Usuario` desde "../../models": Modelos definidos para interactuar con los elementos de la base de datos.
+
+## Función principal: getInList
+
+La función `getInList` es la encargada de verificar si se puede crear una nueva notificación de evento según las condiciones proporcionadas. La función recibe tres parámetros: `date`, `user` y `place`. Dentro de la función, se realiza lo siguiente:
+
+1. Verifica que todos los parámetros estén presentes. Si alguno falta, arroja un error con el mensaje "Missing details."
+2. Comprueba si la fecha no está en el pasado ni más de un año en el futuro. En caso contrario, arroja un error específico.
+3. Realiza una consulta en la base de datos para verificar si ya existe una notificación con los mismos criterios. Si existe, arroja un error con el mensaje "Notification already stablished."
+4. Si todas las comprobaciones anteriores son exitosas, crea una nueva instancia de `DiscoNotification` con la información proporcionada y la guarda en la base de datos utilizando `DataStore.save()`.
+
+## Función de manejo de solicitudes: handler
+
+La función `handler` es la encargada de procesar las solicitudes HTTP entrantes y enviarlas al método `getInList`. Para ello, sigue estos pasos:
+
+1. Extrae los valores de `place`, `date` y `user` del cuerpo de la solicitud (`req.body`).
+2. Realiza una consulta en la base de datos para obtener el usuario cuyo `SubId` coincida con el valor de `user`.
+3. Si se encuentra el usuario, llama a la función `getInList` con los parámetros correspondientes y envía una respuesta HTTP con código 200.
+4. Si no se encuentra el usuario, devuelve una respuesta HTTP con código 500 y el error especificado.
+
+En ambos casos, se capturan las excepciones y se envían como respuesta en caso de producirse algún error durante la ejecución.
+```

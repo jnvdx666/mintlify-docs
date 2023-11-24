@@ -1,0 +1,20 @@
+
+El archivo `moderation.jsx` es un componente que maneja las solicitudes relacionadas con la moderación de eventos en la plataforma Rebel. Este archivo se encuentra dentro del directorio `/pages/api/events`, lo cual indica que se trata de una API endpoint.
+
+Entre los principales imports presentes en este archivo, podemos destacar:
+```javascript
+const API_KEY = "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";
+const { token, query, user } = req.body;
+const encryptor = require('simple-encryptor')('gZ7P9rHuPeLrQQHzYD8jCgQDDHsf8BRbMeZ2QkGYPf4wCcCIdNY834NI8rRuN3B2');
+```
+Importamos la clave y el algoritmo de cifrado necesarios para trabajar con las solicitudes y respuestas de manera segura.
+
+La función principal del archivo es la siguiente:
+```javascript
+export default async function handler(req, res) { ... }
+```
+Esta función maneja todas las solicitudes que llegan al endpoint. Primero verifica si el token proporcionado por el usuario es válido y está autorizado para realizar acciones de moderación. Luego, utiliza la API de OpenAI para procesar consultas de moderación de contenido. Finalmente, devuelve una respuesta JSON con los resultados obtenidos.
+
+En caso de encontrarse con algún error durante la ejecución del código, éste será capturado y registrado en la consola, además de enviar un mensaje de error al cliente con el estado HTTP 500.
+
+Para más información sobre cómo funciona esta API endpoint, se recomienda revisar la documentación oficial de Next.js y la API de OpenAI.

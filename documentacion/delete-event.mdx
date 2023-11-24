@@ -1,0 +1,37 @@
+
+
+---
+**Archivo: pages/api/pr/data/delete-event.jsx**
+
+Este archivo contiene la lógica de una API para eliminar un evento en particular del sistema de gestión de entradas almacenado en la base de datos. La función principal es `handlePut`, que se encarga de actualizar los registros relevantes en las tablas `Entradas` y `Discotecas`.
+
+Se realizan las siguientes importaciones:
+```javascript
+import { DataStore } from "aws-amplify";
+import { Amplify } from "aws-amplify";
+import { Discotecas, Entradas } from "../../../models";
+import awsExports from "../../../aws-exports";
+import { captureException } from "@sentry/nextjs";
+```
+
+La configuración de Amplify se realiza con el siguiente comando:
+```javascript
+Amplify.configure(awsExports);
+```
+
+La función `handlePut` recibe dos parámetros: `prId` e `eventId`. Esta función realiza lo siguiente:
+1. Consulta las entradas relevantes utilizando `DataStore.query()` sobre el modelo `Entradas`.
+2. Consulta el evento correspondiente utilizando `DataStore.query()` sobre el modelo `Discotecas`.
+3. Itera sobre las entradas encontradas y marca cada una como oculta (`item.Hide = true`).
+4. Marca el evento como oculto.
+
+El componente principal de este archivo es el exportación por defecto de una función `handler`:
+```javascript
+export default async function handler(req, res) {
+  // ...
+}
+```
+
+Dicha función maneja las solicitudes HTTP entrantes, verificando si el método de la solicitud es PUT. Si es así, llama a la función `handlePut` con los parámetros proporcionados en el cuerpo de la solicitud (`req.body.prId` y `req.body.eventId`) y devuelve una respuesta JSON vacía con estado 200. Si no, devuelve una respuesta JSON vacía con estado 404.
+
+Si ocurre algún error durante la ejecución de la función `handler`, éste es capturado por `captureException` y se envía una respuesta JSON con el mensaje de error y código de estado 500.

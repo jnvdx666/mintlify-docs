@@ -1,0 +1,25 @@
+
+```mdx
+# Admin Accept Tickets API
+
+This API endpoint handles the acceptance of tickets by admins. It updates the status of the ticket and creates a document with the necessary information. The endpoint is triggered via an HTTP POST request.
+
+## Main Imports
+
+The main imports used in this file include:
+
+1. `DataStore` from `@aws-amplify/datastore`: This module is responsible for managing data storage operations like querying and saving data.
+2. `Document` and `Entradas` from `../../models`: These models define the schema for storing documents and tickets respectively.
+
+## Functionalities
+
+When this API endpoint is triggered, it performs the following actions:
+
+1. Extracts values for `token`, `code`, and `ticket` from the request body.
+2. Checks if the `token` matches a predefined value. If so, proceeds with the next steps. Otherwise, returns a response with HTTP status 500.
+3. Retrieves the ticket object using `DataStore.query()` method with `Entradas` model and the given `ticket`.
+4. If `code` exists, creates a new `Document` instance with the provided `code`, other properties set to their respective placeholder values, and saves it using `DataStore.save()`.
+5. Updates the retrieved ticket object's `Hide` and `OnRevision` properties to `false` and `true`, respectively, and saves the updated object back into the database using `DataStore.save()`.
+6. Finally, sends a success response with HTTP status 200.
+
+In case any errors occur during these processes, a response with HTTP status 500 would be sent along with the error details.

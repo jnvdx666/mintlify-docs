@@ -1,0 +1,28 @@
+
+
+# Archivo check-coincidences.jsx
+
+Este archivo contiene la lógica del endpoint de comprobación de posibles coincidencias en eventos para la aplicación Rebel. Este se encarga de comprobar si hay otros eventos que puedan estar relacionados con el nombre ingresado por el usuario.
+
+## Importaciones principales
+
+- `DataStore`: Modulo de AWS Amplify utilizado para realizar consultas y operaciones sobre los datos almacenados en la nube.
+- `Discotecas`: Modelo de datos utilizado para representar las discotecas registradas en la aplicación.
+
+## Funciones principales
+
+La función principal de este archivo es una función `handler` que maneja todas las solicitudes realizadas a este endpoint. Esta función sigue un flujo secuencial:
+
+1. Realiza la decodificación del token recibido en la solicitud.
+2. Verifica si el token es válido y si no ha expirado.
+3. Si el token es válido, realiza una consulta a la base de datos para obtener todos los eventos que no estén ocultos.
+4. Compara cada uno de los elementos obtenidos en la consulta con el nombre ingresado por el usuario.
+5. Retorna como respuesta un objeto JSON que contiene dos propiedades:
+   - `list`: Un array de objetos que representan los eventos encontrados que tienen alguna similitud con el nombre ingresado por el usuario.
+   - `already`: Un valor booleano que indica si existe algún evento cuyo nombre sea exactamente igual al ingresado por el usuario.
+
+En caso de que ocurra algún error durante la ejecución de esta función, retornará un objeto JSON con un mensaje de error y su respectiva excepción.
+
+## Componentes principales
+
+No aplica, ya que este archivo solo contiene la lógica del endpoint y no presenta interfaces gráficas ni componentes visuales.

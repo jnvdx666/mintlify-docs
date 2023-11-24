@@ -1,0 +1,30 @@
+
+
+Archivo `pages/accounts/confirm.jsx`
+
+Este archivo contiene la implementación del componente principal de la página de confirmación de cuentas en la aplicación Rebel. La página permite a los usuarios verificar su cuenta mediante la recepción de un código de confirmación enviado a su correo electrónico. El flujo de la página se maneja a través de diferentes etapas, cada una con su propio formulario y funcionalidad específica.
+
+**Importaciones principales:**
+
+- Funciones react como `useState`, `useEffect`.
+- Componentes de NextJS como `Link`, `Head`, `useRouter`.
+- Funciones e importaciones de AWS Amplify como `Auth`.
+- Hook personalizado `useForm`.
+- Función `useTranslation` para manejar traducciones.
+
+**Funciones principales:**
+
+La función principal `Index()` utiliza varios hooks de estado y efectos para controlar el flujo de la página y mantener el contexto actualizado. Algunas de las funciones más importantes son:
+
+- `attemptSendCode`: Envía un código de confirmación al correo electrónico proporcionado y avanza a la siguiente etapa si el envío es exitoso.
+- `attemptConfirmCode`: Verifica el código de confirmación ingresado y avanza a la siguiente etapa si el código es válido.
+
+**Componentes principales:**
+
+La página muestra diferentes componentes según la etapa actual a la que se encuentre el usuario. Las etapas incluyen:
+
+1. Solicitud de envío de código: Aquí, el usuario ingresa su correo electrónico y solicita un código de confirmación. Al enviarlo, se ejecuta la función `attemptSendCode()`.
+2. Confirmación del código: Una vez enviado el código, el usuario debe ingresar el código de 6 dígitos que ha recibido en su correo electrónico. Al confirmarlo, se ejecuta la función `attemptConfirmCode()`.
+3. Cuenta restablecida correctamente: Después de confirmar el código correctamente, el usuario ve un mensaje indicándole que su cuenta ha sido restablecida con éxito y se le ofrece la opción de iniciar sesión nuevamente.
+
+En resumen, este archivo contiene la implementación principal de la página de confirmación de cuentas en la aplicación Rebel, permitiendo a los usuarios verificar sus cuentas y finalizar el proceso de registro.

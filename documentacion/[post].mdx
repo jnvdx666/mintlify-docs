@@ -1,0 +1,29 @@
+
+Archivo: pages/publications/[post].jsx
+---
+Este archivo contiene la implementación de una página individual para mostrar un artículo específico en el sitio web de Rebel Tickets. Utiliza varias funciones y componentes de otras partes del proyecto. La principal función de este archivo es renderizar los detalles de un artículo específico utilizando datos obtenidos desde AWS DataStore.
+
+**Importaciones principales:**
+- `Head` de next/head se utiliza para agregar etiquetas meta al cabezal HTML.
+- `useTranslation` de next-translate/useTranslation se utiliza para manejar las traducciones del sitio web.
+- `parse` de html-react-parser se utiliza para convertir correctamente el contenido HTML del artículo.
+- `Footer`, `Navbar` e `Indicator` son componentes personalizados que se utilizan para construir la estructura visual de la página.
+- `DataStore` desde @aws-amplify/datastore se utiliza para obtener información sobre los artículos publicados.
+- `Post` es un modelo de datos utilizado para representar los artículos en el sistema.
+- `serializeModel` desde @aws-amplify/datastore/ssr se utiliza para serializar los modelos de datos antes de enviarlos como propiedades a la página.
+
+**Funciones principales:**
+- `getStaticPaths`: Esta función se encarga de generar rutas estáticas para cada uno de los artículos disponibles en el sitio web. Para ello, consulta todos los registros de la tabla `Post` en DataStore y crea una ruta para cada uno de ellos.
+```javascript
+export async function getStaticPaths() { ... }
+```
+- `getStaticProps`: Esta función se ejecuta en tiempo de compilación y se encarga de obtener el registro de datos correspondiente al artículo actual basándose en su enlace único. Si no se encuentra ningún registro de datos o ocurre algún error durante la recuperación de datos, se devuelve una página 404.
+```javascript
+export async function getStaticProps(context) { ... }
+```
+
+**Componentes principales:**
+- El componente `Index` es el componente principal de esta página. Este componente recibe el contenido del artículo como propiedades y se encarga de renderizar toda la estructura visual y de interacción de la página. Dentro de este componente, se utilizan varios componentes auxiliares como `Head`, `Navbar`, `Footer` e `Indicator`. Además, se utiliza la función `parse` para convertir correctamente el contenido HTML del artículo.
+```javascript
+function Index(props) { ... }
+```

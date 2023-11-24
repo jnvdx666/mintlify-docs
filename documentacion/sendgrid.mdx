@@ -1,0 +1,30 @@
+
+Archivo: pages/api/sendgrid.jsx
+
+**Descripción general del archivo**
+
+El archivo `sendgrid.jsx` es un componente de la aplicación Next.js que se encarga de manejar el envío de correos electrónicos utilizando la API de SendGrid y su integración con Sentry para capturar excepciones.
+
+**Importaciones principales**
+
+1. Se importa la función `sendMail` desde `@sendgrid/mail`.
+2. Se importa la función `captureException` desde `@sentry/nextjs`.
+
+**Funciones principales**
+
+La función principal en este archivo es `sendEmail`, una función asíncrona que maneja lo siguiente:
+
+- Recibe una solicitud (`req`) y una respuesta (`res`).
+- Extrae el contenido del cuerpo de la solicitud y lo guarda en la variable `contenido`.
+- Utiliza la función `send` de SendGrid para enviar un correo electrónico con ciertas propiedades predefinidas:
+   * El destinatario del correo electrónico (`to`) se toma del cuerpo de la solicitud.
+   * La dirección de correo electrónico del remitente está preestablecida como `'notifications@rebeltickets.es'` y el nombre como `'Rebel Tickets'`.
+   * El asunto del correo electrónico siempre será `"Notificación"`.
+   * Para la plantilla del correo electrónico, se utiliza el identificador de la plantilla (`plantilla`) que viene en el cuerpo de la solicitud.
+   * Los datos dinámicos del correo electrónico se extraen directamente del objeto `contenido`.
+- Si todo sale bien, se devuelve una respuesta exitosa al cliente con el código de estado `200` y los detalles de la respuesta de SendGrid.
+- En caso de algún error durante el proceso, se captura la excepción utilizando `captureException` de Sentry y luego se devuelve una respuesta con el código de estado correspondiente o `500` por defecto si no hay ninguno específico.
+
+**Componentes principales**
+
+No aplica en este caso, ya que el archivo solo contiene funciones y no componentes React.

@@ -1,0 +1,26 @@
+
+
+```mdx
+# send-download-after-pay.jsx
+
+En este archivo se maneja la lógica de envío del código de entrada después de un pago exitoso en nuestra plataforma de tickets. El archivo está escrito en JavaScript y utiliza el framework Next.js para su funcionamiento.
+
+## Importaciones principales
+
+No hay importaciones relevantes en este archivo para documentar.
+
+## Funciones principales
+
+La función principal de este archivo es manejar las solicitudes que llegan al endpoint `/api/send-download-after-pay`. Esta función realiza lo siguiente:
+
+1. Extraer los datos enviados en el cuerpo (`intent` y `ticket`) de la solicitud (`req`).
+2. Utilizar la biblioteca Stripe para recuperar el estado del `paymentIntent`, es decir, verificar si el pago ha sido autorizado o no.
+3. Verificar si el pago ha sido exitoso y si el ID de la entrada coincide con el valor enviado en la solicitud. Si ambas condiciones son verdaderas, continuar con el siguiente paso; de lo contrario, lanzar un error con el mensaje "Not authorized".
+4. Cifrar el valor de la entrada utilizando la biblioteca `simple-encryptor` y devolverlo como JSON en la respuesta.
+
+Si durante la ejecución de esta función ocurre algún error, éste será capturado y devuelto en la respuesta con el código de estado 500.
+
+## Componentes principales
+
+No hay componentes relevantes en este archivo para documentar, ya que se trata de una función de servidor sin interacción con componentes visuales.
+```

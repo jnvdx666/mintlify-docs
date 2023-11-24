@@ -1,0 +1,26 @@
+
+
+---
+
+Archivo: pages/api/events/get-lowest-price.jsx
+
+**Descripción del archivo:**
+Este archivo contiene la lógica de la API para obtener el precio más bajo de un evento específico en la plataforma Rebel. Se encarga de recibir una solicitud con información relevante y utilizando la librería AWS Amplify DataStore realiza consultas para determinar el precio más bajo disponible para el usuario.
+
+**Importaciones principales:**
+- `DataStore` desde `@aws-amplify/datastore`: Utilizado para realizar consultas en la base de datos.
+- `Discotecas` e `Entradas` desde "../../models": Modelos definidos para interactuar con las colecciones correspondientes en la base de datos.
+
+**Funciones principales:**
+La función principal es un controlador de solicitudes `async function handler(req, res)`. Esta función maneja la lógica completa del archivo, verificando la autenticación del token, realizando consultas adecuadas en la base de datos y obteniendo el precio más bajo disponible para el usuario.
+
+**Componentes principales:**
+No aplica, ya que este archivo no contiene componentes React. Solo contiene la lógica de la API para ser consumida por otros endpoints o componentes.
+
+**Proceso detallado dentro de la función handler:**
+1. Obtiene los valores `event`, `user` y `token` del cuerpo de la solicitud (`req.body`).
+2. Desencripta el token y obtiene dos valores importantes: `tokenDate` y `tokenUser`.
+3. Verifica si el `tokenUser` coincide con el ID del usuario actual y si el tiempo almacenado en `tokenDate` es válido (dentro de las últimas 24 horas).
+4. Si la verificación es exitosa, se buscan todos los registros de entradas disponibles para el evento específico utilizando el modelo `Discotecas` y realizando una consulta con filtros adecuados en la base de datos mediante `DataStore.query()`.
+5. Una vez obtenidas todas las entradas disponibles, se utiliza el método `reduce()` de JavaScript para encontrar el objeto con el menor valor en el campo `Precio`.
+6. Finalmente, se retorna el precio más bajo como respuesta JSON (`res.status(200).json({ price: lowestPrice.Precio })`) o un error de autenticación si falla algún paso anterior.

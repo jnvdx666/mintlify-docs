@@ -1,0 +1,19 @@
+
+Archivo de la página de subida de entradas en formato PDF para el sitio web de Rebel Tickets utilizando NextJS y tecnologías Amazon como Amplify, DataStore y S3.
+
+Importaciones principales:
+- Componentes y funciones de React y NextJS.
+- Componentes personalizados de la aplicación.
+- Módulos y funciones de AWS Amplify.
+- Módulo UUID para generar identificadores únicos.
+- Módulo next-translate para manejar las traducciones del sitio.
+
+Funciones clave:
+- La función `getServerSideProps` se encarga de obtener los datos de la entrada desde el servidor antes de renderizar la página. Utiliza una consulta GraphQL para solicitar información sobre la entrada y verifica si cumple con ciertos criterios antes de permitir su carga.
+- El componente principal `PaymentForm` muestra un formulario para que el usuario pueda subir su entrada digital en formato PDF. Incluye validación del tipo de archivo y manejo de errores. Al estar listo para enviarse, llama a las funciones necesarias para subir el archivo al bucket de Amazon S3 y actualizar el estado de la entrada en la base de datos.
+
+Componentes principales:
+- En la primera parte del componente `PaymentForm`, se presenta un formulario para que el usuario pueda seleccionar y subir su archivo de entrada. Se utiliza un control de entrada de tipo "file" para permitir la selección del archivo y una función `handleFile` para manejar la validación y subida del archivo.
+- La segunda parte del componente muestra un mensaje de éxito cuando el proceso de subida está completo, indicando que el proceso ha finalizado correctamente. Aquí, se incluye un botón para continuar navegando por la plataforma.
+
+Para sumar, este archivo JSX representa una página de subida de entradas digitales en formato PDF para el sitio web de Rebel Tickets. Permite a los usuarios subir sus propios archivos de entrada y se encarga de gestionar la subida al bucket de Amazon S3 y la actualización del estado de la entrada en la base de datos.

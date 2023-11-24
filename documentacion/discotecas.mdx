@@ -1,0 +1,32 @@
+
+Archivo `src/pages/discotecas.jsx`
+
+Este archivo contiene la implementación de una página en el framework NextJS que muestra las discotecas disponibles en la plataforma Rebel Tickets. La estructura principal del archivo se basa en componentes personalizados y en la importación de funciones y componentes específicos de NextJS y tecnologías de AWS como Amplify y DataStore. Además, utiliza el paquete next-translate para manejar el soporte multilingüe.
+
+**Importaciones principales:**
+
+- Componentes propios:
+  * `Navbar`: Barra de navegación utilizada en toda la aplicación.
+  * `Indicator`: Componente de estado que indica si hay alguna acción en curso.
+  
+- Componentes de NextJS:
+  * `Link`: Envuelve a un componente y crea un enlace hacia otro recurso sin necesidad de solicitudes HTTP adicionales.
+  * `Image`: Permite optimizar y servir imágenes estáticas junto con sus atributos `width`, `height` y `quality`.
+  * `Head`: Permite agregar etiquetas `<head>` al documento HTML.
+  
+- Funcionalidades de AWS Amplify:
+  * `DataStore`: API para interactuar con la base de datos NoSQL de AWS.
+  * `serializeModel`: Función auxiliar para serializar modelos en formato JSON.
+  
+- next-translate:
+  * `useTranslation`: Hook personalizado para manejar el soporte multilingüe en los componentes.
+
+**Funciones principales:**
+
+- `getDiscos()`: Esta función realiza una consulta a la base de datos utilizando `DataStore.query()`, filtrando aquellos lugares que no están ocultos ni son eventos. Luego, serializa e devuelve los resultados.
+
+- `Lista()`: Es el componente principal de este archivo. Utiliza el hook `useTranslation` para permitir el soporte multilingüe en su contenido. Dentro de este componente, se incluye el código JSX que define la estructura y diseño de la página, incluyendo el uso de componentes como `Navbar`, `Indicator`, `HamburgerMenu` y `Card`. También se encarga de renderizar dinámicamente cada tarjeta de discoteca utilizando el método `Array.prototype.map()`.
+
+**Principal componente:**
+
+El componente `Lista` es el principal de este archivo. Este componente se encarga de generar la interfaz de usuario de la lista de discotecas disponible en la plataforma Rebel Tickets. Para cada elemento de la lista, se renderiza un componente `Card` personalizado con información relevante sobre la discoteca, como nombre, dirección y foto. Además, incluye enlaces a otros recursos relacionados con cada discoteca.

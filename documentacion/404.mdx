@@ -1,0 +1,20 @@
+
+El archivo `404.jsx` es una página de error personalizada en la aplicación NextJS para manejar las situaciones donde una página no se encuentra o no existe. Esta página muestra un mensaje amigable al usuario indicando que la página solicitada no fue encontrada y proporciona dos opciones: volver atrás o ir al inicio de la aplicación.
+
+**Importaciones principales:**
+
+- `Link`: Importado desde 'next/link', permite la navegación entre páginas de manera eficiente.
+- `Head`: Importado desde 'next/head', le permite agregar etiquetas `<head>` a su aplicación.
+- `useRouter`: Importado desde 'next/router', hook que permite acceder a las propiedades del enrutador.
+- `Navbar`: Componente de la barra de navegación de la aplicación.
+- `useTranslation`: Hook de internacionalización utilizado para traducir el contenido a diferentes idiomas.
+
+**Funciones principales:**
+
+La función principal `NotFound()` se encarga de renderizar la interfaz de usuario de la página de error 404. Utiliza el hook `useTranslation` para obtener las traducciones necesarias según el idioma actualmente seleccionado por el usuario. Además, utiliza el hook `useRouter` para acceder al objeto `router`, lo cual le permitirá realizar acciones como la navegación hacia atrás en el historial del navegador.
+
+**Componentes principales:**
+
+- `Navbar`: El componente de la barra de navegación se incluye en esta página para mantener la consistencia en la experiencia del usuario.
+
+Esta página de error 404 está diseñada para ser fácil de entender e interactuar, utilizando una combinación de textos descriptivos, iconos y botones con funcionalidades claras. La interacción principal la constituyen los dos botones presentados, uno para regresar a la página anterior utilizando el historial del navegador y otro para dirigirse directamente al inicio de la aplicación.

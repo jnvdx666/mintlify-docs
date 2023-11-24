@@ -1,0 +1,28 @@
+
+
+Archivo **lugares.jsx**
+
+Este archivo contiene la lógica principal del componente `Index` en la ruta `/admin/lugares`. El mismo se encarga de gestionar los lugares (discotecas y eventos) dentro de la plataforma Rebel. A continuación, se presenta una descripción de su contenido y estructura.
+
+**Importaciones:**
+
+- `useState`, `useEffect`: Hooks básicos de React para manejar el estado y efectos secundarios en los componentes funcionales.
+- `useForm`: Hook personalizado para manejar el estado y validación de formularios en aplicaciones React.
+- Componentes adicionales como `Navbar`, `Indicator`, `HamburgerMenu` y otros elementos gráficos son importados desde la carpeta `components`.
+- Módulos de AWS como `withSSRContext`, `DataStore`, `Amplify`, etc., permiten interactuar con las bases de datos y servicios de Amazon Web Services.
+- Modelos de datos como `Entradas`, `Discotecas` y `Ubicaciones` son importados para interactuar con la base de datos mediante `DataStore`.
+
+**Funciones principales:**
+
+- `fetchEntradas(p1)`: Función asíncrona que obtiene información sobre discotecas y eventos, así como sus ubicaciones y entradas.
+- `anyadir(tipo, definitivo)`: Función para agregar nuevos eventos o discotecas.
+- `eliminar(data, definitive)`: Función para eliminar eventos o discotecas.
+- `fusionar(item, definitive)`: Función para fusionar dos eventos o discotecas.
+- `editTicket(dict)`: Función para editar información de un evento o discoteca.
+- `onSubmit1`: Función para manejar el envío de un formulario de edición de eventos o discotecas.
+
+**Componentes principales:**
+
+El componente principal es `Index`, que se encarga de renderizar toda la interfaz de usuario y manejar la lógica detrás de las acciones realizadas por el administrador en cada uno de los diferentes modos de visualización (por ejemplo, gestión de discotecas, eventos, etc.).
+
+Dentro de este componente, hay varios casos en los que se renderiza una interfaz diferente según el valor de la variable `page`. Estos casos corresponden a diferentes modos de visualización mencionados anteriormente. Cabe destacar que en algunos de estos modos (como eliminar, editar y fusionar), se utilizan subcomponentes o elementos gráficos específicos para facilitar la interacción con el usuario (botones, mensajes de confirmación, etc.).

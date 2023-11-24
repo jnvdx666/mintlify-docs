@@ -1,0 +1,40 @@
+
+
+# Archivo `pages/admin/users.jsx`
+
+Este archivo contiene un componente principal que permite administrar los usuarios en la plataforma Rebel. Dentro del archivo se pueden encontrar funciones para buscar y editar usuarios, así como también renderizar diferentes vistas según el estado actual de la aplicación.
+
+## Importaciones principales
+
+A continuación, se presentan las importaciones más relevantes dentro del archivo:
+
+```javascript
+import { useState, useEffect, useRef } from "react";
+import { useForm } from "react-hook-form";
+import { Navbar } from "../../components/general/Navbar";
+import { withSSRContext } from 'aws-amplify';
+import { DataStore } from '@aws-amplify/datastore';
+import { Entradas, Discotecas, Usuario } from '../models';
+```
+
+Estas importaciones son fundamentales para poder realizar consultas a la base de datos, manejar estados y gestionar el acceso a diferentes vistas dentro de la aplicación.
+
+## Funciones principales
+
+Dentro del archivo, se encuentran varias funciones que permiten llevar a cabo acciones específicas:
+
+1. `fetchEntradas`: Esta función se encarga de obtener todos los usuarios registrados en la plataforma y sus respectivas entradas compradas. Posteriormente, organiza esta información de manera ordenada.
+
+2. `vetar`: Aunque no está completamente implementada en este fragmento de código, esta función parece destinada a bloquear o denegar el acceso a un usuario específico.
+
+3. `searchString`: Esta función permite realizar una búsqueda de usuarios basándose en criterios de búsqueda ingresados por el usuario.
+
+4. `onSubmit1`: Al igual que `fetchEntradas`, esta función interactúa con la base de datos para modificar la información de un usuario específico.
+
+5. `editTicket`: Esta función es llamada cuando el usuario desea editar la información de un usuario particular.
+
+## Componentes principales
+
+El componente principal del archivo es `Index`. Este componente se encarga de renderizar diferentes vistas según el estado actual de la aplicación (por ejemplo, si se muestra una lista de usuarios o si se encuentra en modo edición). Además, maneja eventos de clic y entrada para brindar una experiencia de usuario fluida e interactiva.
+
+La vista principal presenta una tabla que muestra información sobre cada usuario, incluyendo su nombre, correo electrónico, instagram, número de teléfono y estado de RRPP. También incluye botones para editar la información de un usuario y vetarlo.

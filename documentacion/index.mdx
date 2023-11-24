@@ -1,0 +1,20 @@
+
+
+Archivo: pages/index.jsx
+
+**Descripción general del archivo:** Este archivo contiene la lógica y el componente principal de la página de inicio de la aplicación Rebel Tickets. Se encarga de obtener los datos necesarios para renderizar la página, como las discotecas, eventos, entradas, entre otros. Además, se encarga de manejar el SSR (Server Side Rendering) en la obtención de estos datos.
+
+**Imports más importantes:**
+- `useTranslation`: Hook que permite el manejo de traducciones en la aplicación.
+- `DataStore`: Componente de AWS Amplify que realiza consultas a la base de datos.
+- `Models`: Modelos utilizados para interactuar con la base de datos.
+- `Components`: Componentes utilizados en diferentes partes de la interfaz de usuario.
+
+**Funciones principales:**
+- `retrieveContent()`: Función encargada de obtener todos los datos necesarios para renderizar la página de inicio. Realiza varias consultas a la base de datos utilizando `DataStore.query()`. Los resultados se procesan y organizan para ser utilizados por los componentes de la página.
+- `getStaticProps():` Función que se ejecuta en el lado del servidor antes de que se renderice la página. Obtiene los datos necesarios para renderizar la página y los pasa como propiedades al componente principal. También configura un tiempo de revalidación de 3600 segundos.
+
+**Componentes principales:**
+- `<Index/>`: Componente principal de la página de inicio. Utiliza varios componentes hijos para construir la estructura visual y funcional de la página. Recibe las propiedades obtenidas en `getStaticProps()` y las utiliza para renderizar los distintos elementos de la página.
+
+El archivo index.jsx es una parte fundamental de la aplicación Rebel Tickets, ya que es responsable de obtener y mostrar los datos necesarios para que los usuarios puedan comprar y vender entradas en discotecas. Además, gracias al uso de `getStaticProps()`, se garantiza un buen rendimiento en el lado del servidor y una rápida actualización de los datos en cada renderizado de la página.

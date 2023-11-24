@@ -1,0 +1,28 @@
+
+Archivo: pages/admin/places/edit.jsx
+
+Este archivo contiene una página web para editar un lugar en la aplicación Rebel. La página se encarga de recibir información sobre un lugar específico, permitiendo al usuario modificar sus detalles como el nombre, descripción, imagen y metadatos.
+
+**Importaciones principales:**
+
+- useState: Hook de React que permite manejar estados dentro de los componentes funcionales.
+- Navbar: Componente de la barra de navegación de la aplicación.
+- DataStore, Storage y withSSRContext: Importadas desde 'aws-amplify', son utilizadas para interactuar con la base de datos y el servicio de almacenamiento en la nube.
+- Discotecas y Usuario: Modelos definidos para interactuar con las colecciones en la base de datos.
+- dynamic: Función de Next.js que permite cargar componentes dinámicamente.
+- react-quill: Paquete de terceros que proporciona un editor de texto enriquecido.
+
+**Funciones clave:**
+
+-getServerSideProps: Esta función se ejecuta en el lado del servidor y se encarga de obtener la información necesaria para renderizar la página. Obtiene los datos del lugar y del usuario autenticado para verificar si tiene permiso para realizar cambios en el lugar.
+
+-CreatePost: Es el componente principal de la página. Se encarga de renderizar el formulario de edición y gestionar las interacciones del usuario como subir archivos, modificar campos y guardar los cambios en la base de datos. Utiliza varios hooks de estado de React para mantener el control de los valores ingresados por el usuario.
+
+**Componentes clave:**
+
+- Navbar: Componente usado para mostrar la barra de navegación en la parte superior de la pantalla.
+- HamburgerMenu: Componente SVG que representa un icono de menú desplegable.
+- Input: Elementos de entrada de texto utilizados para ingresar el título, la metadescripción y el contenido del lugar.
+- Button: Botón utilizado para enviar los cambios realizados en el lugar.
+
+En caso de que el usuario no tengue permisos para editar el lugar, la página devuelve un objeto con propiedad "notFound" en true, indicando que la página solicitada no existe.

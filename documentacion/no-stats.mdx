@@ -1,0 +1,46 @@
+
+
+# Archivo no-stats.jsx en ruta pages/api/pr/data/
+
+Este archivo contiene la lógica de un endpoint que permite obtener información relacionada con entradas, eventos y ubicaciones específicas según los ID proporcionados. El archivo se encarga de manejar las solicitudes POST para este recurso. A continuación, se presenta una descripción detallada del mismo.
+
+## Importaciones principales
+
+Se realizan varias importaciones desde diferentes paquetes y modelos locales. Entre ellos, destaca la importación de `DataStore` y `Amplify` desde `aws-amplify`, y los modelos `Discotecas`, `Entradas` e `Ubicaciones`. Además, se importa el archivo `aws-exports` para configurar correctamente Amplify.
+
+```javascript
+import { DataStore } from "aws-amplify";
+import { Amplify } from "aws-amplify";
+
+import { Discotecas, Entradas, Ubicaciones } from "../../../models";
+
+import awsExports from "../../../aws-exports";
+
+Amplify.configure(awsExports);
+```
+
+## Función principal: handlePost
+
+La función `handlePost` es la encargada de procesar la lógica principal del endpoint. Esta función recibe dos parámetros: `prId` y `venueId`. Dentro de esta función, se utilizan `Promise.all()` junto con consultas a `DataStore.query()` para obtener datos sobre entradas, eventos y la ubicación correspondiente al `venueId` dado. Luego, se realiza otra consulta a `DataStore.query()` para obtener la información de la ubicación. Finalmente, se retorna un objeto con dicha información.
+
+```javascript
+async function handlePost(prId, venueId) {
+  // Código de las consultas y obtención de datos...
+  
+  return {
+    tickets: tickets,
+    events: events.map((event) => ({
+      ...event,
+      LongText: null,
+      Details: null,
+      Metas: null,
+    })),
+    venue: { ...venue, LongText: null, Details: null, Metas: null },
+    location: location.Nombre,
+  };
+}
+```
+
+## Exportación predeterminada
+
+El archivo expone por defecto una función `handler` que se encarga de gestionar las solicitudes HTTP entrantes, verificando si su método es "POST". Si cumple con esta condición, llama a la función `handlePost` con los parámetros requeridos y devuelve como respuesta en formato JSON los datos obtenidos. Caso contrario, devuelve un estado 404. En caso de encontrarse algún error durante la ejecución, se devuelve un mensaje de error en formato JSON con un código de estado 500.

@@ -1,0 +1,47 @@
+
+
+# Archivo : pages/sitemap.xml.jsx
+
+Este archivo representa la generación y el envío del archivo de mapa del sitio en formato XML para ser consumido por motores de búsquda.
+
+## Importaciones principales
+
+Se realizan las siguientes importaciones desde diferentes fuentes:
+
+```javascript
+import {
+  DataStore
+} from '@aws-amplify/datastore';
+
+import {
+  Discotecas,
+  Performer,
+  Post,
+  Ubicaciones,
+  Usuario
+} from './models';
+```
+
+La variable `EXTERNAL_DATA_URL` contiene la URL base del sitio web externo.
+
+```javascript
+const EXTERNAL_DATA_URL = 'https://www.rebeltickets.es';
+```
+
+## Función principal: generateSiteMap()
+
+La función `generateSiteMap()` realiza lo siguiente:
+
+1. Realiza consultas a los modelos de datos usando DataStore, como Discoctacas, Usuarios, Ciudades, Publicaciones, Eventos y Artistas.
+2. Procesa los resultados de cada consulta y los convierte en estructuras de datos apropiadas para su uso posterior.
+3. Genera un String XML con información sobre todas las URLs del sitio web y sus metadatos, como fecha de modificación y frecuencia de cambio.
+
+El resultado final es un documento XML que contiene todas las rutas del sitio web con sus respectivas métricas.
+
+## Componente principal: SiteMap()
+
+El componente `SiteMap` no tiene lógica de renderizado propia. En lugar de esto, utiliza la función `getServerSideProps` para generar el archivo de mapa del sitio cuando se solicita la página desde el servidor.
+
+## Función: getServerSideProps()
+
+La función `getServerSideProps` se encarga de ejecutar la función `generateSiteMap`, enviar el resultado como una respuesta XML al navegador y devolver las "props" necesarias para el componente `SiteMap`.

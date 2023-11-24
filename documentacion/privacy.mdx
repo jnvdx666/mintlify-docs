@@ -1,0 +1,31 @@
+
+Archivo `/pages/legal/privacy.jsx`
+
+**Resumen del archivo:**
+En este archivo se encuentra la página de política de privacidad de la plataforma Rebel Tickets. Se encarga de mostrar información sobre cómo se tratan los datos personales de los usuarios y sus derechos.
+
+**Importaciones principales:**
+- `Head`: Importada desde 'next/head', se utiliza para agregar etiquetas `<head>` que ayudan en el SEO y el manejo de metadatos del sitio web.
+- `SidebarWrapper`: Componente importado desde '../../components/general/SidebarWrapper', es utilizado para dar estructura y diseño a la página.
+
+**Funciones principales:**
+La principal función de este archivo es mostrar la página de política de privacidad, donde se detalla cómo se tratan los datos personales de los usuarios y sus derechos. No hay funciones adicionales ni complejas lógicas.
+
+**Componentes principales:**
+El componente principal de esta página es `SidebarWrapper`, que recibe como props `className`, `showFooter`. Este componente actúa como contenedor principal de la página, englobando todos los elementos visuales y de diseño.
+
+```javascript
+return (
+  <>
+    <Head>
+      ...
+    </Head>
+    <SidebarWrapper
+      className="flex flex-col w-full xl:px-16"
+      showFooter={true}
+    >
+      ...
+    </SidebarWrapper>
+  </>
+);
+```

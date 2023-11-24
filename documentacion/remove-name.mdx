@@ -1,0 +1,24 @@
+
+
+Archivo: pages/api/list/remove-name.jsx
+
+Este archivo representa una API de punto final en la aplicación que permite eliminar un nombre de la lista del evento. La función exportada por defecto se encarga de procesar las solicitudes y eliminar el nombre específico de la lista.
+
+**Importaciones más importantes:**
+
+- `DataStore` del paquete `@aws-amplify/datastore`: Se utiliza para realizar operaciones CRUD con los datos almacenados en AWS DataStore.
+- `Lista` de "../../models": Es el modelo utilizado para interactuar con la entidad Lista en la base de datos.
+
+**Funciones principales:**
+
+La función principal `handler(req, res)` es la encargada de ejecutar toda la lógica necesaria para eliminar el nombre de la lista. Esta función sigue los siguientes pasos:
+
+1. Desestructura las variables `user`, `list`, y `token` desde el cuerpo de la solicitud (`req.body`).
+2. Desencripta y separa el token en dos partes: `tokenList` e `tokenUser`.
+3. Comprueba si el ID del usuario actual coincide con el ID del usuario contenido en el token. Además, verifica si el ID de la lista coincide con el ID de la lista contenida en el token. Si ambas condiciones son verdaderas, procede con el siguiente paso, de lo contrario, arroja un mensaje de error.
+4. Obtiene la lista actual de la base de datos mediante `DataStore.query()`, realiza algunas manipulaciones sobre los elementos de la lista y guarda la nueva lista modificada en la base de datos utilizando `DataStore.save()`.
+5. Devuelve una respuesta JSON con un estado "success" si todo ha funcionado correctamente. En caso contrario, devuelve una respuesta JSON con un estado "failed" y el error generado.
+
+**Componentes principales:**
+
+No hay componentes React mencionados en este archivo. Este archivo contiene solo la lógica del backend para manejar una solicitud HTTP y modificar datos en una base de datos.

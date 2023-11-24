@@ -1,0 +1,48 @@
+
+Archivo `pages/verify.jsx`
+
+Este archivo contiene una función de componente React que permite verificar a un usuario como RRPP utilizando las funciones de autenticación y almacenamiento de AWS Amplify. El proceso de verificación se divide en varias etapas, cada una con su propio formulario para recopilar información adicional del usuario.
+
+**Importaciones principales:**
+```javascript
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import PhoneInput from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
+import isMobilePhone from 'validator/lib/isMobilePhone';
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { Navbar } from "../components/general/Navbar";
+import { withSSRContext } from "aws-amplify";
+import { Discotecas, Usuario } from './models';
+import { Storage } from 'aws-amplify';
+import useTranslation from 'next-translate/useTranslation'
+import { serializeModel } from '@aws-amplify/datastore/ssr';
+```
+
+**Funciones principales:**
+- `getServerSideProps`: Obtiene los datos necesarios para la página, como el usuario actual y las discotecas disponibles.
+- `verify`: Componente principal que renderiza el formulario de verificación según la etapa actual.
+
+**Componentes principales:**
+- `<PhoneInput/>`: Permite al usuario ingresar su número de teléfono en un formato específico.
+- `<input>` y `<select>`: Elementos de entrada y selección para recopilar información adicional del usuario.
+
+**Funciones secundarias:**
+- `uploadPic`: Sube una imagen al almacenamiento de Amazon Web Services.
+- `changeDetails`: Envía los detalles del usuario para su verificación.
+- `onSubmit1`, `onSubmit2`: Manejan el envío de los dos formularios principales.
+
+**Variables de estado:**
+- `isLoading`: Indica si se está realizando una acción asíncrona, como la verificación del usuario.
+- `errorMsg`: Almacena un mensaje de error que se muestra al usuario si se produce algún problema durante el proceso de verificación.
+- `user`: Contiene la información del usuario actual.
+- `page`: Representa la etapa actual del proceso de verificación (0: primer formulario, 1: subida de foto, 2: confirmación, 3: verificación exitosa).
+- `selectedImage`: Imagen seleccionada por el usuario para su perfil.
+- `Override`: Si es verdadero, indica que el usuario desea enviar una nueva solicitud de verificación aunque ya esté previamente verificado como RRPP.
+- `DiscoOptions`: Lista de discotecas disponibles para la verificación.
+- `phone`: Número de teléfono proporcionado por el usuario.
+
+**Eventos principales:**
+- `onSubmit1`: Valida la información ingresada por el usuario en el primer formulario y envía los datos a través de la API de verificación.
+- `onSubmit2`: Sube la imagen seleccionada por el usuario y actualiza su perfil con la nueva información.

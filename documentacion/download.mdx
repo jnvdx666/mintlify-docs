@@ -1,0 +1,35 @@
+
+
+Archivo: pages/tickets/download.jsx
+
+**Descripción general del archivo**
+
+El archivo download.jsx es un componente de página en la aplicación Rebel que maneja la descarga de entradas para eventos. Este archivo se encarga de obtener información sobre el estado actual de una entrada y redirigir al usuario al archivo correcto si está disponible para su descarga.
+
+**Importaciones principales**
+
+Se importan las siguientes librerías y funciones:
+
+- API y graphqlOperation desde 'aws-amplify' para interactuar con las APIs de AWS.
+- Storage desde '@aws-amplify/storage' para gestionar el almacenamiento en Amazon S3.
+
+**Funciones principales**
+
+La función principal en este archivo es getServerSideProps(). Esta función realiza lo siguiente:
+
+1. Descifra la clave de acceso al ticket utilizando un cifrado simple.
+2. Ejecuta una consulta GraphQL para obtener información detallada sobre la entrada específica vinculada a esa clave de acceso.
+3. Verifica si la entrada está oculta o eliminada. Si no está oculta ni eliminada, se permite la descarga del archivo de la entrada.
+4. En caso contrario, devuelve un error indicando que el boleto no existe.
+
+**Componentes principales**
+
+El componente principal en este archivo es Downloader(). Este componente simplemente muestra un mensaje de error si no se encuentra el boleto especificado durante la descarga.
+
+```jsx
+export default function Downloader() {
+  return (
+    <>Error: the specified ticket does not exist.</>
+  )
+}
+```

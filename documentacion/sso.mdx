@@ -1,0 +1,51 @@
+
+
+# Página de Inicio de Sesión Único (SSO) en Rebel Tickets
+
+Este archivo contiene el componente principal para la página de inicio de sesión único (SSO) en la aplicación Rebel Ticket. La función principal de esta página es manejar la autenticación y redireccionar al usuario según su estado de autenticación.
+
+## Importaciones principales
+
+Las siguientes importaciones son las más relevantes en este archivo:
+
+- `useEffect` de "react": se utiliza para manejar los efectos secundarios en los componentes funcionales.
+- `useRouter` de "next/router": proporciona acceso al objeto del enrutador para realizar navegación entre páginas.
+- `Auth` de "@aws-amplify/auth": proporciona funciones relacionadas con la autenticación de usuarios utilizando servicios de Amazon Web Services (AWS).
+
+## Funciones principales
+
+La función principal del archivo es `getUser`, que se encarga de verificar si el usuario está autenticado o no. Si el usuario está autenticado, lo redirige a la página "/auth/access". En caso contrario, lo redirige a la página "/login". Esta función se ejecuta cuando se carga el componente.
+
+```javascript
+async function getUser() {
+  try {
+    await Auth.currentAuthenticatedUser()
+    router.push("/auth/access")
+  } catch (error) {
+    router.push("/login")
+  }
+}
+
+useEffect(() => {
+  getUser()
+}, [])
+```
+
+## Componentes principales
+
+El componente principal de este archivo es el componente `SSO`. Este componente muestra un indicador de carga mientras se verifica el estado de autenticación del usuario. Una vez determinado el estado del usuario, se redirige a la página correspondiente ("/auth/access" si el usuario está autenticado o "/login" si no lo está).
+
+```javascript
+return (
+  <>
+    <title>Rebel Tickets - Autorización</title>
+    <div className="flex justify-center items-center h-screen">
+      <svg ...>
+        ...
+      </svg>
+    </div>
+  </>
+)
+```
+
+En resumen, este archivo maneja la lógica de inicio de sesión único en la aplicación Rebel Tickets mediante la verificación del estado de autenticación del usuario y la redirección a la página adecuada según el resultado.

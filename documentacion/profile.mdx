@@ -1,0 +1,31 @@
+
+
+Archivo: pages/profile.jsx
+
+Este archivo contiene la lógica y el diseño de la página de perfil del usuario en la aplicación Rebel Tickets. La página permite al usuario ver su información personal, actualizar su foto de perfil y modificar su nombre de usuario.
+
+**Importaciones principales:**
+
+- Componentes y funciones de React: useState, useEffect, useForm.
+- Componentes y funciones de NextJS: Link, Head.
+- Servicios y funciones de AWS Amplify: Auth, Storage, API, graphqlOperation, withSSRContext.
+- Estructuras de datos: import { v4 as uuidv4 } from 'uuid'.
+- Componentes propios: SidebarWrapper.
+- Traducciones: useTranslation.
+
+**Función principal:**
+
+getServerSideProps: Esta función se ejecuta en el servidor antes de que se renderice la página. Obtiene los datos del usuario autenticado y configura las propiedades iniciales de la página.
+
+**Componentes principales:**
+
+Profile: El componente principal de esta página. Renderiza diferentes elementos según el valor de la variable 'page'.
+
+- Cuando page es igual a 0, muestra la información del perfil del usuario, como su nombre de usuario, correo electrónico, estado de verificación (si es un revendedor de entradas, RRPP) y permite al usuario cerrar sesión.
+- Cuando page es igual a 1, muestra un formulario para que el usuario pueda actualizar su foto de perfil y su nombre de usuario. Este formulario utiliza useForm de react-hook-form para manejar sus campos. Al enviar el formulario, se realiza una llamada a la API para guardar la nueva información.
+
+**Funciones secundarias:**
+
+- imageChange: Función que se activa cuando el campo de entrada de imágenes cambia. Actualiza el estado de la imagen seleccionada por el usuario.
+- onSubmit3: Función que se encarga de manejar el envío del formulario de actualización de perfil. Realiza una llamada a la API para subir la nueva imagen y luego actualiza la información del usuario en la base de datos.
+- uploadPic: Función auxiliar que se encarga de subir la imagen seleccionada a Amazon S3 utilizando AWS Amplify Storage.

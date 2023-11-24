@@ -1,0 +1,23 @@
+
+Archivo `pages/login.jsx`
+
+El archivo `login.jsx` es una página de inicio de sesión en la aplicación Rebel. La página permite a los usuarios ingresar con sus credenciales (correo electrónico y contraseña). Además, ofrece opciones para iniciar sesión con Apple e Google. Utiliza las funciones de autenticación proporcionadas por AWS Amplify.
+
+**Importaciones principales:**
+
+- Funciones de React: `useState`, `useEffect`.
+- Componentes de NextJS: `Link`, `Head`.
+- Autenticación de Amplify: `Auth`.
+- Formularios reactivos: `useForm`.
+- Traducción de Next: `useTranslation`.
+
+**Funciones principales:**
+
+- `handleSubmit`: Función que maneja el envío del formulario de inicio de sesión. Verifica si el usuario existe y redirige según el resultado. Ejemplo: Si el correo electrónico o la contraseña son incorrectos, se muestra un mensaje de error.
+- `useEffect`: Realiza comprobaciones cuando la página se carga. Por ejemplo, verifica si el usuario ya está autenticado y lo redirige a otra página si es así.
+
+**Componentes principales:**
+
+- El componente principal es el componente predeterminado de la página `Login`. Este componente incluye la lógica de renderizado condicional basada en el estado de carga (`Loading`). Si `Loading` es verdadero, solo se muestra un indicador de carga. De lo contrario, se muestra el formulario de inicio de sesión con opciones para iniciar sesión con correo electrónico y contraseña, así como con proveedores externos como Apple e Google.
+
+Este archivo forma parte de una documentación más amplia sobre cómo funcionan las diferentes partes de la aplicación Rebel.

@@ -1,0 +1,22 @@
+
+El archivo `pr.jsx` es una parte del proyecto Rebel que se encarga de la funcionalidad de venta de entradas en el sitio web. A continuación, se presenta un análisis general del archivo:
+
+**Importaciones principales:**
+
+Las siguientes librerías y componentes son los más importantes importados en este archivo:
+
+- Componentes y funciones de React: `useState`.
+- Componentes y funciones de NextJS: `Link`, `Head`, `dynamic`, `useRouter`.
+- Componentes propios de la aplicación: `Navbar`, `BankInfoForm`, `CreateEvent`, `ProgressBar`.
+- Servicios de autenticación y base de datos de AWS Amplify: `API`, `graphqlOperation`, `withSSRContext`, `DataStore`.
+- Internacionalización con Next Translate: `useTranslation`.
+
+**Funciones y componentes clave:**
+
+La función principal del archivo es la exportación de un componente de React llamado `Sell`. Este componente maneja la lógica para la creación y publicación de anuncios de ventas de entradas en el sitio web. También utiliza varios subcomponentes como `BankInfoForm`, `CreateEvent` y `ProgressBar` para facilitar la interacción con el usuario y mostrar el progreso a lo largo del proceso de venta.
+
+Además, el archivo contiene varias funciones asíncronas utilizadas para obtener información sobre el usuario actual y las discotecas disponibles para su venta. Estas funciones utilizan principalmente las importaciones mencionadas anteriormente para interactuar con APIs y bases de datos externas.
+
+**Componentes principales:**
+
+Los subcomponentes mencionados anteriormente (`BankInfoForm`, `CreateEvent`) desempeñan un papel crucial en la interacción con el usuario durante el proceso de venta. `BankInfoForm` permite al usuario ingresar información bancaria necesaria para recibir pagos por sus entradas vendidas, mientras que `CreateEvent` le permite al usuario crear y gestionar eventos relacionados con sus entradas.

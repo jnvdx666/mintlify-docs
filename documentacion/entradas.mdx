@@ -1,0 +1,20 @@
+
+
+Archivo `pages/admin/entradas.jsx`
+
+**Resumen del archivo:**
+El archivo `entradas.jsx` es una página de administración de entradas para un negocio. Utiliza React Hooks para manejar el estado y los efectos secundarios, así como la biblioteca `aws-amplify` para interactuar con recursos de Amazon Web Services (AWS) como AWS DataStore. La página permite visualizar, buscar, editar y eliminar entradas.
+
+**Importaciones principales:**
+La mayoría de las importaciones son de paquetes comunes de React, como `useState`, `useEffect` y `useRef`. También se importan componentes específicos de la aplicación como `Navbar`. Además, se utilizan paquetes de `aws-amplify` como `withSSRContext`, `DataStore` y modelos locales de datos como `Entradas`, `Discotecas` y `Usuario`.
+
+**Funciones principales:**
+- `fetchEntradas`: Esta función recupera todas las entradas del sistema y construye un objeto con toda la información relevante para cada entrada. Luego, ordena las entradas por fecha de evento y las guarda en el estado correspondiente.
+- `eliminar`: Esta función elimina una entrada específica o muestra un mensaje de confirmación antes de eliminarla permanentemente.
+- `editTicket`: Esta función selecciona una entrada específica para su edición y cambia la página a la que corresponde.
+- `searchString`: Esta función filtra las entradas según una cadena de búsqueda ingresada por el usuario.
+
+**Componentes principales:**
+- El componente principal de esta página es `Index`, que maneja todo el flujo de la interfaz de usuario, desde la autenticación hasta la manipulación de datos. Incluye diferentes estados y efectos para controlar la presentación de diferentes vistas, como la vista inicial, la vista de eliminación, la vista de edición y la vista de éxito en la modificación.
+
+- Los componentes internos incluyen elementos HTML estándales como tablas, encabezados, filas y celdas, junto con botones y enlaces para acciones como la búsqueda, la edición y la eliminación. Utilizan clases CSS para dar estilo y organizar el diseño responsivo.

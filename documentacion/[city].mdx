@@ -1,0 +1,20 @@
+
+Archivo: pages/city/[slug]/[city].jsx
+
+**Resumen del archivo:** Este archivo contiene la implementación de una página en el sitio web que muestra información sobre las discotecas y eventos disponibles en una ciudad específica. Utiliza tecnologías como NextJS, AWS Amplify y DataStore para obtener los datos y renderizarlos en la interfaz de usuario.
+
+**Importaciones principales:**
+- Componentes de NextJS: ```Link```, ```Head``` y ```Image```
+- ```useTranslation``` de next-translate para manejar traducciones
+- Components: ```FAQ``` y ```SidebarWrapper``` son utilizados en este archivo.
+
+**Funciones principales:**
+- ```getStaticPaths()```: Esta función se encarga de generar las rutas dinámicas para cada ciudad disponible en la base de datos. Realiza una consulta a AWS Amplify para obtener todas las ciudades y sus respectivas URL.
+
+- ```getStaticProps()```: Esta función se ejecuta en tiempo de construcción y obtiene los datos de las discotecas y eventos de una ciudad específica. Realiza una consulta a AWS Amplify con el ID de la ciudad para obtener todos los detalles relevantes.
+
+**Componente principal:** La mayor parte del archivo está dedicado al componente principal ```City```. Este componente es un contenedor que renderiza la sección de búsqueda, los elementos de la lista de discotecas y eventos, y finalmente el componente ```FAQ```.
+
+El componente ```City``` utiliza el hook ```useState``` para mantener actualizado el estado de las discotecas y permite al usuario filtrar los resultados según su nombre. Además, realiza una consulta a AWS Amplify para obtener los datos de la ciudad actual y los eventos relacionados.
+
+El componente también incluye metadatos en formato JSON-LD para mejorar la optimización de motores de búsqueda y el rendimiento general del sitio web.

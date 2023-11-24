@@ -1,0 +1,25 @@
+
+Archivo: pages/api/tickets/delete.jsx
+
+Este archivo contiene la lógica de una API para eliminar entradas en el sistema de boletos Rebel. La función exportada `handler` es un controlador que maneja las solicitudes HTTP y procesa la eliminación del boleto.
+
+Importaciones principales:
+- `DataStore`: Permite realizar operaciones CRUD (Create, Read, Update, Delete) sobre los modelos definidos en nuestra aplicación.
+- `Entradas`: Modelo utilizado para representar las entradas en el sistema.
+- `Document`: Modelo utilizado para representar los documentos relacionados con las entradas.
+- `@sentry/nextjs`: Paquete utilizado para capturar excepciones y enviarlas al servicio de monitoreo de errores Sentry.
+
+Funciones principales:
+- `handler` : Función que procesa la solicitud y realiza la eliminación del boleto si cumple con las condiciones establecidas. Si se encuentra algún error durante el proceso, este es capturado mediante el paquete `@sentry/nextjs`.
+
+Componentes principales:
+El componente principal de este archivo es la función `handler`, encargada de gestionar la solicitud y procesar la eliminación del boleto. Esta función sigue los siguientes pasos:
+
+1. Desestructura el cuerpo de la solicitud (`req.body`) para obtener la información del boleto y el token de autenticación.
+2. Utiliza una instancia de `simple-encryptor` para descifrar el token de autenticación.
+3. Obtiene el registro original del boleto desde DataStore usando su ID.
+4. Verifica si el boleto está pagado, reservado o marcado como eliminado pero no en revisión. Si es así, lanza un error indicando que el boleto no puede ser eliminado.
+5. Compara el token descriptencriptado con el ID del usuario del boleto. Si coinciden, actualiza el boleto en DataStore estableciendo sus propiedades `Hide` y `OnRevision` en `true` e `false`, respectivamente. Además, si el boleto tiene un documento digital asociado, lo marca como inactivo en DataStore.
+6. Retorna una respuesta JSON con el estado de la operación.
+
+Si ocurre alguna excepción durante el procesamiento, esta es capturada y registrada utilizando el paquete `@sentry/nextjs`, y se envía una respuesta JSON con el estado falla al cliente.

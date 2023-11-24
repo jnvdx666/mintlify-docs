@@ -1,0 +1,17 @@
+
+Archivo: pages/logout.jsx
+
+Este archivo contiene el componente de cierre de sesión de la aplicación Rebel. Se utiliza Amplify para manejar las cuentas de usuario y se integra con React para controlar los efectos secundarios en el renderizado del componente.
+
+Importaciones principales:
+- `Auth` desde aws-amplify: se utiliza para manejar las acciones relacionadas con la autenticación de usuarios como el cierre de sesión.
+- `useRouter` from next/router: hook de React que permite navegar entre las diferentes páginas de la aplicación.
+- `useEffect` de "react": hook de React utilizado para manejar los efectos secundarios en componentes funcionales.
+
+Funcionalidad principal:
+El componente `Logout` realiza el proceso de cierre de sesión cuando es montado. Para ello, utiliza el hook `useEffect` que invoca a la función `Auth.signOut()` cada vez que el componente se monta. Esta función se encarga de desautenticar al usuario actual y redirigirlo a la página de inicio. En caso de error durante el proceso de cierre de sesión, este será capturado y registrado en la consola.
+
+Componentes principales:
+El componente principal de este archivo es el mismo que su nombre, `Logout`. Este componente realiza el proceso de cierre de sesión y muestra un indicador de carga mientras se produce dicha acción. El uso de un spinner indica visualmente al usuario que se está procesando la solicitud de cierre de sesión.
+
+Para ver cómo se integra este componente dentro de la aplicación, consulta la documentación completa de la aplicación Rebel.

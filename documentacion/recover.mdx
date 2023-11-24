@@ -1,0 +1,30 @@
+
+El archivo `recover.jsx` es una página en la que se permite al usuario recuperar su contraseña utilizando un proceso de dos pasos. Para hacer esto, se importan varias funciones y componentes de diferentes bibliotecas y servicios como React, NextJS, Amplify y otras adicionales. La función principal del archivo es permitir que los usuarios recuperen sus contraseñas en caso de haber las olvidado.
+
+**Importaciones principales:**
+```javascript
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import Head from 'next/head';
+import { useRouter } from "next/router";
+import { Auth } from '@aws-amplify/auth';
+import { useForm } from "react-hook-form";
+import useTranslation from 'next-translate/useTranslation'
+```
+La mayoría de las importaciones son funciones o componentes de diferentes bibliotecas y servicios para manejar estados, eventos, rutas y autenticación.
+
+**Funciones principales:**
+
+- `forgotPass`: Esta función realiza el primer paso del proceso de recuperación de contraseña utilizando la función `Auth.forgotPassword()` de Amplify para enviar un correo electrónico con un código de restablecimiento de contraseña al usuario.
+  
+- `confirmForgotPass`: Esta función realiza el segundo paso del proceso de recuperación de contraseña utilizando la función `Auth.forgotPasswordSubmit()` de Amplify para cambiar la contraseña del usuario con el código y la nueva contraseña proporcionada.
+
+**Componentes principales:**
+
+El componente principal del archivo es el componente `Login`, que controla todo el flujo de recuperación de contraseña. Este componente maneja tres pasos:
+
+1. Solicitar el correo electrónico del usuario.
+2. Confirmar el código recibido por correo electrónico e ingresar una nueva contraseña.
+3. Mostrar un mensaje indicando que el proceso de recuperación de contraseña ha finalizado correctamente y permitir al usuario iniciar sesión nuevamente.
+
+En cada uno de estos pasos, el componente renderiza diferentes formularios y mensajes según sea necesario para guiar al usuario a través del proceso de recuperación de contraseña.

@@ -1,0 +1,19 @@
+
+Archivo: pages/_app.jsx
+
+Este archivo es el componente principal de la aplicación Rebel creada con NextJS y que utiliza recursos de AWS como Amplify, DataStore y S3 entre otros. Este archivo configura e implementa el entorno necesario para que funcione correctamente la aplicación, incluyendo la autenticación y la integración con Google Analytics, Google Ads y Facebook Pixel.
+
+Importaciones principales:
+- Estilos globales y personalizados.
+- Componentes Head y Script de NextJS.
+- Biblioteca AWS Amplify y su configuración específica.
+- Componente NextTopLoader para mostrar un indicador de carga en la parte superior de la página.
+
+Funciones principales:
+- Función `Rebel` que recibe dos parámetros, `Component` y `pageProps`. Esta función se encarga de renderizar todos los elementos necesarios para que funcione correctamente la aplicación, incluyendo las etiquetas meta, scripts de seguimiento y el componente principal.
+
+Componentes principales:
+- El componente `<NextTopLoader>` se utiliza para mostrar una barra de progreso en la parte superior de la pantalla mientras se cargan los recursos más pesados del sitio web.
+- Dentro de la función `Rebel`, se incluye también el componente `<Component>` que representará el contenido principal de cada página. Este componente será dinámico según la ruta actual y sus props serán proporcionadas por `pageProps`.
+
+Para utilizar este componente en otras partes de la aplicación, simplemente importe `{ Rebel }` desde el archivo correspondiente y úselo como componente principal de la aplicación.

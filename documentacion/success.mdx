@@ -1,0 +1,30 @@
+
+Archivo: pages/payment/success.jsx
+
+El archivo `success.jsx` es una página de éxito de pago en la aplicación Rebel. Esta página se encarga de informar al usuario que su compra ha sido exitosa y muestra un mensaje al respecto. Además, el usuario puede regresar al inicio de la aplicación.
+
+## Importaciones principales
+Se importan diversos componentes y bibliotecas necesarias para el funcionamiento adecuado del archivo. Algunas de las más importantes son:
+
+- `Head`: Componente de NextJS para manipular el `<head>` del HTML.
+- `Link`: Componente de NextJS para navegar entre las diferentes páginas de la aplicación.
+- `useTranslation`: Función de Next Translate para manejar los textos multilingües.
+- `SidebarWrapper`: Componente de la aplicación que envuelve el contenido principal con un diseño específico.
+
+## Funciones principales
+En este archivo, la función `getServerSideProps()` no realiza ninguna acción significativa ya que devuelve un objeto vacío. Por lo tanto, podemos pasar directamente a analizar la función `PaymentSuccess()`.
+
+La función `PaymentSuccess()` es la principal del archivo y es responsable de renderizar la interfaz de usuario. Dicha función utiliza la traducción para adaptarse a distintos idiomas. A continuación, se describe el componente principal:
+
+```javascript
+<SidebarWrapper
+  className="flex flex-col w-full xl:px-16"
+  showFooter={true}
+>
+  ...
+</SidebarWrapper>
+```
+
+Dentro del componente `SidebarWrapper`, se encuentra un mensaje de éxito de pago que incluye un ícono de confirmación y un mensaje descriptivo. También, hay un botón que permite al usuario volver al inicio de la aplicación.
+
+En resumen, el archivo `success.jsx` es una página de éxito de pago que informa correctamente al usuario sobre el proceso de pago y le brinda la opción de navegar hacia otras partes de la aplicación.

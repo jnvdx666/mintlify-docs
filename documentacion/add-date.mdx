@@ -1,0 +1,43 @@
+
+
+This file represents an API endpoint for adding a date to an event using AWS Amplify's DataStore service. The main functionality of this endpoint is to check whether the provided token is valid and then add a new date to the specified event. If successful, it returns the updated date. Otherwise, it returns an empty object. In case of any errors during execution, it will return a JSON response with a status of "failed" and the occurred error message.
+
+**Imports:**
+The file starts by importing necessary modules. It imports the `DataStore` module from `@aws-amplify/datastore`, which is used to interact with the underlying data storage system. Additionally, it imports the `Discotecas` model, which represents the events in the application.
+
+```javascript
+import { DataStore } from "@aws-amplify/datastore";
+import { Discotecas } from "../../models";
+```
+
+**Main Functionality:**
+The main function of this API route handles incoming requests to add new dates to existing events. It does so by first extracting relevant information from the request body and decrypting the provided token. Then, it checks if the token is valid and its timestamp lies within the last hour. If both conditions are met, it proceeds to save the new date to the specified event in the database. Finally, it sends back a JSON response containing the updated date.
+
+Here's a breakdown of the main steps performed inside the `handler` function:
+
+1. Destructure variables from `req.body`:
+   ```javascript
+   const { event, date, user, token } = req.body;
+   ```
+
+2. Decrypt the token and separate it into parts:
+   ```javascript
+   const tokenSeparated = tokenRaw.split(",");
+   ```
+
+3. Check if the token is valid:
+   ```javascript
+   if ((tokenUser == user.id) && (tokenDate > Date.now() - 3600000)) { ... }
+   ```
+
+4. Save the new date to the specific event in the database:
+   ```javascript
+   await DataStore.save(Discotecas.copyOf(previous, item => {
+       item.eventDate = newDate
+   }));
+   ```
+
+5. Send back a JSON response containing the updated date:
+   ```javascript
+   res.status(200).json({ date: newDate });
+   ```

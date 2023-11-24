@@ -1,0 +1,23 @@
+
+Archivo: pages/list/manage.jsx
+
+**Resumen del archivo:**
+El archivo `manage.jsx` es una página de la aplicación Rebel que permite gestionar las listas creadas por los usuarios para unirse a eventos en discotecas. Esta página muestra información detallada sobre la lista como el nombre de la discoteca, fecha y hora de apertura, personas apuntadas a la lista, entre otros. Además, permite al usuario cerrar la lista cuando ya no necesiten más personas.
+
+**Sumario de importaciones principales:**
+- Componentes generales: Importa el componente `Navbar`.
+- Modelos: Importa modelos `Discotecas`, `Lista` y `Usuario`.
+- next-translate: Importa `useTranslation` para manejar traducciones.
+- React y otras bibliotecas: Importa funciones como `useState`, `useRouter` y `useTranslation`.
+
+**Análisis de la función principal:**
+La función `getServerSideProps()` se encarga de obtener todos los datos necesarios para renderizar la página. Utiliza la autenticación actual y consulta los datos de la lista, discoteca, vendedor y asistentes utilizando AWS Amplify y su base de datos DataStore. Si el usuario no está autorizado o si hay algún error, devuelve `notFound: true`. De lo contrario, devuelve los datos necesarios para renderizar la página.
+
+**Análisis del componente principal:**
+El componente `ManageList` es el componente principal de la página. Renderiza toda la interfaz de usuario con la información de la lista y permite al usuario cerrar la lista cuando ya no necesiten más personas. También utiliza el componente `Navbar` para navegar a otras partes de la aplicación.
+
+En este componente, se realizan varias acciones importantes:
+- Se obtiene una referencia al objeto `router` de NextJS para navegar entre rutas.
+- Se traduce el texto en diferentes partes de la interfaz de usuario utilizando `useTranslation`.
+- Se crea una matriz `monthNames` para convertir los meses a nombres.
+- La función `closeList()` realiza una solicitud POST a `/api/list/close` para cerrar la lista y actualizar su estado en la base de datos.

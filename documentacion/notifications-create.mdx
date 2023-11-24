@@ -1,0 +1,34 @@
+
+
+Archivo: pages/api/notifications-create.jsx
+
+**Descripción del archivo**
+
+El archivo `notifications-create.jsx` es un punto de entrada (endpoint) que maneja la creación y envío de notificaciones entre usuarios dentro de la aplicación Rebel. Este endpoint se encarga de gestionar las comunicaciones entre usuarios y el envío de notificaciones push o emails según las preferencias de los receptores.
+
+**Importaciones principales**
+
+- Se importa `DataStore` desde 'aws-amplify' para interactuar con la base de datos.
+- Se importan modelos como `Conversacion`, `Mensaje` y `Usuario`.
+- Se utiliza '@sendgrid/mail' para facilitar el envío de correos electrónicos.
+- Se utiliza '@pusher/push-notifications-server' para facilitar el envío de notificaciones push.
+
+**Funciones principales**
+
+La función principal de este archivo es una función asíncrona llamada `handler(req, res)`. Esta función realiza lo siguiente:
+
+1. Extraer información relevante del cuerpo de la solicitud (`req.body`) como `senderSub`, `receiverSub`, `message` y `product`.
+2. Verificar si el mensaje está vacío e iniciar un proceso de error si lo está.
+3. Consultar a los usuarios emisor y receptor utilizando sus respectivas subscripciones (`senderSub` y `receiverSub`).
+4. Buscar o crear una conversación entre ambos usuarios.
+5. Crear un nuevo mensaje y vincularlo a la conversación encontrada o creada previamente.
+6. Actualizar la conversación para marcarla como leída por el destinatario.
+7. Enviar una notificación push al receptor si tiene habilitado este método de notificación.
+8. En caso contrario, enviar un correo electrónico al receptor si tiene habilitado este método de notificación.
+9. Retornar una respuesta HTTP en formato JSON con el estado de la operación y el mensaje creado.
+
+En caso de algún error durante la ejecución, se captura éste y se retorna una respuesta HTTP en formato JSON con el detalle del error.
+
+**Componentes principales**
+
+No se mencionan componentes específicos en este archivo, ya que su función principal es la gestión de la lógica de backend para la creación y envío de notificaciones entre usuarios.

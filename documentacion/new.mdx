@@ -1,0 +1,27 @@
+
+ Archivo: pages/admin/blog/new.jsx
+
+Este archivo es una parte integral de la aplicación web Rebel y se encarga de manejar la creación de nuevas entradas de blog en la plataforma. Utiliza diversas tecnologías como React, NextJS, AWS Amplify y AWS Services (DataStore, S3).
+
+**Importaciones principales:**
+```javascript
+import { useState } from "react";
+import { Navbar } from "../../../components/general/Navbar";
+import { serializeModel } from "@aws-amplify/datastore/ssr";
+import { DataStore, withSSRContext, Storage, Auth } from "aws-amplify";
+import { Post, Usuario } from "../../models";
+import { v4 as uuidv4 } from "uuid";
+import dynamic from "next/dynamic";
+import "react-quill/dist/quill.snow.css";
+import { HamburgerMenu } from "../../../components/svgs";
+```
+Aquí se importan las funciones necesarias para el estado y los componentes navbar, también se importan modelos específicos de la aplicación y servicios de almacenamiento y autenticación de AWS Amplify. Además, se utilizan otros paquetes como `uuid` y `next/dynamic`.
+
+**Funciones principales:**
+- La función `getServerSideProps()` se encarga de obtener información sobre el usuario actualmente autenticado y sus permisos dentro de la plataforma. Esta función solo puede ser ejecutada en el lado del servidor.
+- La función principal `CreatePost()` controla toda la interacción del usuario con la interfaz gráfica y maneja el proceso de creación de una nueva entrada de blog. Aquí se encuentran varias funciones internas como `uploadImage()`, `publish()` y el llamado a `ReactQuillNoSSR`'s `onChange()`.
+
+**Componentes principales:**
+- El componente principal, `CreatePost`, renderiza la interfaz gráfica para crear una nueva entrada de blog. Contiene campos de entrada para ingresar el título, descripción, link, metatag y área de contenido mediante el uso de `ReactQuillNoSSR`. También incluye la posibilidad de subir una imagen que se alojará en Amazon S3. Al final, presenta un botón para publicar la entrada de blog.
+
+En resumen, este archivo es responsable de gestionar la creación de nuevas entradas de blog en la plataforma Rebel. Permite a los usuarios autorizados acceder a esta funcionalidad y proporciona una experiencia sencilla e intuitiva para su uso.

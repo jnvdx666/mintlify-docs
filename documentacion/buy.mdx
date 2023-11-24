@@ -1,0 +1,21 @@
+
+Archivo: pages/buy.jsx
+
+Este archivo contiene la implementación de una página para comprar entradas en el sistema Rebel. La página permite al usuario seleccionar la cantidad de entradas que desea comprar y proporcionar información sobre los asistentes a cada entrada. Además, se encarga de calcular el precio total de las entradas seleccionadas y redirigir al usuario a la página de pago si todos los campos son válidos.
+
+**Importaciones principales:**
+
+- Componentes y funciones de React como `useState` y `useForm`.
+- Componentes y funciones específicos de NextJS como `Head`, `Image`, `useRouter`.
+- Componentes propios de la aplicación como `SidebarWrapper`, `TicketAmount` y SVGs como `ProductBack` y `Calendar`.
+- Importa objetos y funciones de AWS Amplify como `API`, `graphqlOperation` y `withSSRContext`.
+- El modelo `Usuario` utilizado con AWS Amplify DataStore.
+- Utilidades de traducción con `useTranslation`.
+
+**Funciones principales:**
+
+- `getServerSideProps`: Esta función obtiene los datos necesarios para renderizar la página de compra, verifica si la entrada está disponible y devuelve los valores iniciales para el componente. Si hay algún problema con la entrada, la función redirige al usuario a la página de inicio de sesión.
+
+**Componentes principales:**
+
+- `AsyncPaymentForm`: Este componente se encarga de manejar toda la lógica de la página de compra, incluida la gestión del estado de los asistentes, la validación de los campos de entrada y la navegación hacia la página de pago. Renderiza un formulario que permite al usuario ingresar la información requerida para cada uno de los asistentes y muestra el precio total de las entradas seleccionadas. Este componente también maneja la adición y eliminación de asistentes dinámicamente según sea necesario.

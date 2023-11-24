@@ -1,0 +1,20 @@
+
+
+Archivo: pages/_error.jsx
+
+Este archivo contiene el componente de la página de error interno en la aplicación Rebel Tickets. La página se muestra cuando ocurre un error en el servidor y no puede manejar una solicitud del cliente. Este esquema de diseño incluye un mensaje de error personalizado y opciones para que los usuarios vuelvan a la página anterior o visiten la página principal.
+
+Importaciones principales:
+
+- `Link` de 'next/link': Se utiliza para navegar entre las diferentes páginas de la aplicación sin necesidad de recargar la página.
+- `Head` de 'next/head': Es utilizado para agregar etiquetas al `<head>` del documento HTML. En este caso, se establece el título de la página.
+- `useRouter` de 'next/router': Un hook proporcionado por Next.js para acceder a las funciones de enrutamiento desde dentro de un componente de React.
+- `Navbar` de '../components/general/Navbar': El componente de barra de navegación que se utiliza en toda la aplicación.
+
+Funciones principales:
+
+La función principal del componente `InternalError` es manejar el error interno y permitir a los usuarios volver a la página anterior o ir a la página principal. Para lograr esto, se utiliza el objeto `router` proporcionado por `useRouter`. Cuando el usuario hace clic en el botón "Return", se llama a la función `router.back()`, lo que lleva al usuario a la página anterior en su historial de navegación.
+
+Componentes principales:
+
+El componente principal de esta página es la sección que muestra el mensaje de error y las opciones de navegación. Aquí se incluyen elementos como el título, el mensaje descriptivo y los botones para volver a la página anterior o ir a la página principal. Además, se incluye el componente `Navbar`, que proporciona una barra de navegación consistente en todas las páginas de la aplicación.

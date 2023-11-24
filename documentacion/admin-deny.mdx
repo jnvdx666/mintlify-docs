@@ -1,0 +1,31 @@
+
+
+Archivo: pages/api/tickets/admin-deny.jsx
+
+Este archivo contiene la lógica del endpoint de administración para denegar tickets en el sistema Rebel. Este archivo es responsable de realizar cambios en los datos de un ticket específico cuando un administrador lo solicita. A continuación se presenta una descripción detallada de cada parte importante del código.
+
+**Importaciones**
+
+1. Se importa `DataStore` desde `@aws-amplify/datastore`. Esta instancia permite interactuar con la base de datos y realizar operaciones CRUD.
+```javascript
+import { DataStore } from "@aws-amplify/datastore";
+```
+
+2. Se importan las modelos `Document` y `Entradas`, que representan las entidades de la base de datos.
+```javascript
+import { Document, Entradas } from "../../models";
+```
+
+**Función principal**
+
+La función exportada por defecto, o función principal, maneja la lógica del endpoint.
+
+El objeto `req` contiene información sobre la petición HTTP, incluyendo el cuerpo de la misma, que en este caso contiene un objeto con dos propiedades: `token` e `ticket`.
+
+Se verifica si el valor de `token` es igual a una cadena predefinida. Si es así, entonces se procede a realizar acciones con la base de datos, utilizando `DataStore`.
+
+Primero, se busca el documento correspondiente al `ticket` proporcionado usando `DataStore.query()`. Luego, se crea una copia del documento encontrado y se modifica su propiedad `OnRevision` a `false`. Finalmente, se guarda esta copia modificada en la base de datos usando `DataStore.save()`.
+
+Si todas las operaciones se completan correctamente, se envía una respuesta HTTP con estado 200 y un objeto vacío.
+
+En caso de que ocurra algún error durante la ejecución del código, se captura dicho error y se envía una respuesta HTTP con estado 500 y un objeto que contiene información sobre el error.

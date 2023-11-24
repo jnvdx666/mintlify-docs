@@ -1,0 +1,29 @@
+
+Archivo: pages/entradas/[ciudad].jsx
+
+El archivo `pages/entradas/[ciudad].jsx` es una página en el framework NextJS que permite listar las entradas disponibles para un conjunto específico de ciudades. Para lograr esto, se utilizan diversos componentes y funciones internas del proyecto. A continuación, se presenta un análisis detallado del mismo.
+
+**Importaciones**
+
+Se importan diversas funciones y componentes dentro del archivo:
+
+- Funciones y componentes nativos de NextJS como `Head`.
+- Componentes propios del proyecto como `VenueCard`, `Indicator`, y `Navbar`.
+- Funciones y modelos de AWS Amplify como `DataStore`, `Discotecas`, y `Ubicaciones`.
+- Función `useTranslation` de la biblioteca 'next-translate'.
+
+**Funciones principales**
+
+Dentro del archivo, se definen varias funciones asíncronas que permiten obtener los datos necesarios para renderizar la página correctamente:
+
+1. `getStaticPaths`: Esta función se encarga de generar las rutas estáticas posibles para cada ciudad disponible en la plataforma. Utiliza la función `DataStore.query()` de AWS Amplify para consultar todas las ubicaciones disponibles y devuelve un array con las rutas posibles.
+
+2. `getCiudad`: Esta función recibe un nombre de ciudad y utiliza `DataStore.query()` para buscar la información correspondiente a esa ciudad en particular. Devuelve un objeto con la latitud, longitud y ID de la ciudad.
+
+3. `getStaticProps`: Es una función asíncrona que se ejecuta en tiempo de compilación y devuelve las propiedades estáticas de la página. Utiliza la función `getCiudad()` previamente definida para obtener la información de la ciudad y luego llama a la función `getEntradas()`, que devuelve dos arrays: uno con las entradas disponibles y otro con los IDs de las discotecas relacionadas. Estos datos se pasan como props al componente principal de la página.
+
+4. `getEntradas`: Esta función realiza consultas a AWS Amplify mediante `DataStore.query()` para obtener tanto las entradas como las discotecas disponibles. Luego, filtra las entradas según las condiciones establecidas y devuelve ambos arrays ordenados por fecha de evento.
+
+**Componente principal**
+
+El componente principal de la página es `Lista`, que se encarga de renderizar todos los elementos visuales necesarios para mostrar las entradas disponibles para cada ciudad. Dentro de este componente, se utilizan varios componentes propios del proyecto como `VenueCard`, `Indicator`, y `Navbar`. Además, se aprovecha la función `useTranslation` para manejar las traducciones de los distintos mensajes presentes en la interfaz.

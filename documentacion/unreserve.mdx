@@ -1,0 +1,26 @@
+
+
+---
+
+Archivo: pages/api/tickets/unreserve.jsx
+
+**Descripción del archivo:**
+Este archivo contiene la lógica de una API para deshacer la reservación de un ticket en el sistema Rebel. La función principal exportada `handler` maneja esta lógica y se encarga de actualizar los datos en la base de datos según las condiciones dadas.
+
+**Importaciones más relevantes:**
+- `DataStore`: Importado desde `@aws-amplify/datastore`, se utiliza para realizar consultas y modificaciones en la base de datos.
+- `Entradas`: Modelo que representa las entradas en el sistema.
+- `captureException`: Función para capturar excepciones e informarlas al servicio de monitoreo de errores Sentry.
+
+**Funciones principales:**
+La función principal es `handler`. Esta función realiza lo siguiente:
+  1. Extrae `ticket` y `token` del cuerpo de la solicitud (`req.body`).
+  2. Desencripta el valor de `token` utilizando una clave de cifrado.
+  3. Consulta la entrada correspondiente en la base de datos utilizando `DataStore.query()`.
+  4. Verifica si la entrada está reservada, no está pagada, no está oculta ni es digital. Si alguna de estas condiciones no se cumple, lanza un error.
+  5. Compara el valor desencriptado de `token` con el ID del usuario y el comprador de la entrada. Si ninguno coincide, lanza un error de autenticación.
+  6. Si la entrada proviene de RRPP, actualiza la cantidad de la entrada original y elimina la entrada reservada. De lo contrario, actualiza la entrada reservada desmarcando su estado como reservada, sin pagar y borrando el comprador y la fecha de compra.
+  7. Retorna una respuesta JSON vacía con un código de estado 200, indicando éxito en la operación.
+
+**Componentes principales:**
+No aplica, ya que este archivo solo contiene la lógica de una API y no incluye componentes React.

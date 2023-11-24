@@ -1,0 +1,21 @@
+
+
+Archivo: pages/search.jsx
+
+**Descripción del archivo:** Este archivo contiene la implementación de la página de búsqueda en la aplicación Rebel. La página permite a los usuarios buscar y filtrar eventos y entradas disponibles basándose en criterios como el nombre, tipo de evento, cantidad de entradas, precio y fecha. También incluye un componente de calendario para seleccionar fechas específicas.
+
+**Importaciones principales:**
+
+- Componentes y funciones de React: useState, useEffect y useRef.
+- Componentes y funciones de NextJS: Head.
+- Componentes propios de la aplicación: SearchEvent, TicketHorizontal, SidebarWrapper, entre otros.
+- Funciones y componentes de AWS Amplify: DataStore.
+- Utilidades de internacionalización: useTranslation.
+
+**Funciones analizadas:**
+
+1. **getStaticProps():** Esta función se encarga de obtener los datos estáticos necesarios para renderizar la página de búsqueda. Realiza consultas a las bases de datos utilizando AWS Amplify DataStore para obtener todos los eventos y entradas que cumplan con ciertos criterios, como tener entradas disponibles, no estar ocultas y no ser reservadas. Luego, procesa estos datos y los devuelve en formato JSON para su uso en la página.
+
+**Componentes analizados:**
+
+1. **Search:** Componente principal de la página de búsqueda. Este componente maneja el estado de los filtros activados por el usuario y realiza una búsqueda en los datos obtenidos mediante getStaticProps según estos filtros. Renderiza dos secciones: una para eventos y otra para entradas, cada una con sus respectivos filtros. Además, cuenta con un componente de calendario para elegir fechas específicas. Al hacer clic en los elementos de los resultados de búsqueda, el usuario es redirigido a la página de detalles correspondiente.

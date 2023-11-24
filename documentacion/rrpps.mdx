@@ -1,0 +1,19 @@
+
+
+Archivo: pages/rrpps.jsx
+
+Este archivo contiene la implementación de una página en el sitio web que muestra una lista de RRPPs (Representantes de Prestadores del Servicio). La página se encarga de obtener y mostrar los datos de los RRPPs que han sido verificados y sus respectivas entradas disponibles para eventos futuros.
+
+Para lograr esto, se utilizan las siguientes importaciones más importantes:
+
+- `useState` y `useEffect`: Hooks básicos de React para manejar estados y efectos secundarios en un componente funcional.
+- `Navbar`, `Indicator`, `HamburgerMenu`: Componentes propios de la aplicación que se encargan de renderizar elementos comunes como la barra de navegación superior o un indicador de carga.
+- `DataStore`: Utilizado para realizar consultas a la base de datos de AWS Amplify.
+- `Usuario`, `Entradas`, `Discotecas`: Modelos definidos en el archivo `models` que representan las tablas de la base de datos.
+- `useTranslation`: Función de next-translate para manejar la internacionalización del sitio web.
+
+La función principal del archivo es `getRRPPS()`, encargada de obtener todos los usuarios con el estado "Verified" y calcular la cantidad total de entradas disponibles para cada uno de ellos. Luego, se obtiene el nombre y foto de su respectiva discoteca, agregándolas al objeto del RRPP.
+
+El componente principal del archivo es `Lista(rrpps)`, que se encarga de renderizar la lista de RRPPs obtenida. Dentro de este componente, se utiliza el hook `useTranslation()` para traducir los textos a diferentes idiomas según las preferencias del usuario. Además, se mapea cada elemento de la lista de RRPPs y se crea un link a su perfil individual.
+
+Finalmente, el componente exportado por defecto es `Lista()`.

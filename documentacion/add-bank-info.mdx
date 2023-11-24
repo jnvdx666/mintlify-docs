@@ -1,0 +1,25 @@
+
+
+---
+
+Archivo: pages/api/users/add-bank-info.jsx
+
+**Descripción del archivo:**
+Este archivo contiene la lógica de un endpoint que permite actualizar información bancaria y de contacto para usuarios autenticados en la aplicación Rebel. El archivo maneja las solicitudes enviadas al endpoint y realiza las operaciones necesarias para actualizar los datos del usuario en el sistema.
+
+**Importaciones principales:**
+- Se importa `DataStore` desde `@aws-amplify/datastore` para interactuar con la base de datos.
+- Se importa el modelo `Usuario` definido previamente para acceder a la información del usuario en la base de datos.
+- Además se importan las funciones de validación `isIBAN`, `isMobilePhone` desde la librería 'validator' para validar los datos ingresados por el usuario.
+
+**Funciones principales:**
+La función principal del archivo es una función `handler` que maneja todas las solicitudes realizadas al endpoint. Esta función sigue un flujo de trabajo secuencial compuesto por varias verificaciones y actualizaciones de datos.
+
+1. Primero, extrae información relevante del cuerpo de la solicitud (`req.body`) como el objeto de usuario, la nueva información del usuario y un token de seguridad.
+2. Luego, descifra y analiza el token de seguridad para obtener información adicional relevante para la validación del proceso de autenticación del usuario.
+3. A continuación, verifica si el token de seguridad es válido comparando su fecha de emisión con la hora actual y si coincide con el identificador del usuario que intentó realizar la actualización.
+4. Si el token de seguridad es válido, procede a validar los datos ingresados por el usuario utilizando las funciones `isIBAN`, `isMobilePhone`.
+5. En caso de que todos los datos proporcionados sean válidos, se busca la información del usuario actual en la base de datos y se actualiza con la nueva información proporcionada por el usuario.
+6. Finalmente, en caso de éxito en la actualización, se envía una respuesta HTTP con código de estado 200 y un mensaje indicando que la actualización fue exitosa.
+
+En caso de encontrarse algún error durante las diferentes etapas del flujo de trabajo mencionado anteriormente, este es capturado y manejado mediante la función `captureException` de la librería `Sentry`, y se envía una respuesta HTTP con código de estado 500 y un mensaje detallando el error ocurrido.

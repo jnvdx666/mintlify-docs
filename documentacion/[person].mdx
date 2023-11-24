@@ -1,0 +1,29 @@
+
+La documentación del archivo `pages/RRPP/[person].jsx` es la siguiente:
+
+**Archivo: pages/RRPP/[person].jsx**
+
+Este archivo representa una página de perfil para un usuario específico en el sistema. La información se obtiene utilizando las funciones `getStaticPaths()` y `getStaticProps()`. El componente principal de este archivo es `RRPP`, que renderiza diferentes vistas según el valor de la variable `page`.
+
+*Importaciones principales:*
+```javascript
+import { useState } from "react";
+import { DataStore } from "@aws-amplify/datastore";
+import { graphqlOperation } from "@aws-amplify/api-graphql";
+import { API } from "@aws-amplify/api";
+import { Entradas, Usuario } from "../models";
+import useTranslation from "next-translate/useTranslation";
+```
+Estas importaciones permiten el uso de funciones de estado de React, consultas a AWS Amplify Datastore, funciones de API GraphQL, modelos definidos para la aplicación y la capacidad de utilizar traducciones en el componente.
+
+*Funciones principales:*
+
+1. `getStaticPaths`: Esta función permite generar las rutas estáticas posibles para cada usuario verificado en el sistema. Utiliza las funciones de AWS Amplify para realizar consultas y devuelve un objeto con las rutas posibles y opciones de revalidación.
+
+2. `getStaticProps`: Esta función se ejecuta en tiempo de compilación para obtener la información necesaria sobre el usuario específico y sus entradas. Realiza varias consultas a AWS Amplify Datastore e instancia de API GraphQL para obtener los datos requeridos. Si el usuario tiene el estado "Verified", devuelve las propiedades necesarias para el componente `RRPP`; de lo contrario, devuelve un error y el componente no se renderizará.
+
+*Componente principal:*
+
+El componente `RRPP` utiliza el estado de React para alternar entre dos vistas: una lista de entradas disponibles para comprar y una vista detallada con información adicional sobre el usuario y sus entradas vendidas. Para cambiar entre estas vistas, el usuario puede hacer clic en los iconos correspondientes en la parte inferior de la pantalla. 
+
+El componente también incluye el componente `VenueCard`, que se utiliza para mostrar cada entrada disponible en una tarjeta con información relevante. Además, el componente utiliza otros componentes importados desde la carpeta `components/general`.
