@@ -1,18 +1,18 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Rebel Tickets",
+  "name": "Starter Kit",
   "logo": {
     "dark": "/logo/dark.svg",
     "light": "/logo/light.svg"
   },
   "favicon": "/favicon.svg",
   "colors": {
-    "primary": "#5F33D6FF",
-    "light": "#A288E7FF",
-    "dark": "#5F33D6FF",
+    "primary": "#5F33D6",
+    "light": "#A288E7",
+    "dark": "#5F33D6",
     "anchors": {
-      "from": "#5F33D6FF",
-      "to": "#A288E7FF"
+      "from": "#5F33D6",
+      "to": "#A288E7"
     }
   },
   "topbarLinks": [
