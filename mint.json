@@ -1,24 +1,24 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Rebel Tickets Docs",
+  "name": "Starter Kit",
   "logo": {
     "dark": "/logo/dark.svg",
     "light": "/logo/light.svg"
   },
   "favicon": "/favicon.svg",
   "colors": {
-    "primary": "#5F33D6FF",
-    "light": "#A288E7FF",
-    "dark": "#5F33D6FF",
+    "primary": "#0D9373",
+    "light": "#07C983",
+    "dark": "#0D9373",
     "anchors": {
-      "from": "#5F33D6FF",
-      "to": "#A288E7FF"
+      "from": "#0D9373",
+      "to": "#07C983"
     }
   },
   "topbarLinks": [
     {
-      "name": "Rebel",
-      "url": "https://rebeltickets.es"
+      "name": "Support",
+      "url": "mailto:hi@mintlify.com"
     }
   ],
   "topbarCtaButton": {
