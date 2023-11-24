@@ -11,33 +11,6 @@
       "to": "#A288E7"
     }
   },
-  "topbarLinks": [
-    {
-      "name": "Support",
-      "url": "mailto:hi@mintlify.com"
-    }
-  ],
-  "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
-  },
-  "anchors": [
-    {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
-    },
-    {
-      "name": "Community",
-      "icon": "slack",
-      "url": "https://mintlify.com/community"
-    },
-    {
-      "name": "Blog",
-      "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
-    }
-  ],
   "navigation": [
     {
       "group": "Empezar",
@@ -47,10 +20,5 @@
       "group": "Paginas",
       "pages": ["documentacion/admin-deny", "documentacion/search", "documentacion/notifications-send", "documentacion/[post]", "documentacion/entradas", "documentacion/create", "documentacion/sitemap_xml", "documentacion/remove-name", "documentacion/uploaded-async-ticket", "documentacion/send-download-after-pay", "documentacion/_error", "documentacion/[person]", "documentacion/admin-accept", "documentacion/logout", "documentacion/unreserve", "documentacion/_document", "documentacion/get-lowest-price", "documentacion/add-date", "documentacion/check-coincidences", "documentacion/no-stats", "documentacion/[ticket]", "documentacion/[list]", "documentacion/recover", "documentacion/update-picture", "documentacion/lugares", "documentacion/get", "documentacion/terms", "documentacion/index", "documentacion/admin-edit", "documentacion/download", "documentacion/moderation", "documentacion/delete-event", "documentacion/404", "documentacion/login", "documentacion/access", "documentacion/check", "documentacion/add-name", "documentacion/buy", "documentacion/opt-in", "documentacion/close", "documentacion/[profileext]", "documentacion/[lista]", "documentacion/discotecas", "documentacion/verify", "documentacion/sell", "documentacion/[city]", "documentacion/FAQ", "documentacion/edit", "documentacion/_app", "documentacion/success", "documentacion/delete", "documentacion/profile", "documentacion/new", "documentacion/[ciudad]", "documentacion/rrpps", "documentacion/sendgrid", "documentacion/upload", "documentacion/confirm", "documentacion/users", "documentacion/[chat]", "documentacion/notifications-create", "documentacion/sso", "documentacion/add-bank-info", "documentacion/pr", "documentacion/manage", "documentacion/privacy"]
     }
-  ],
-  "footerSocials": {
-    "twitter": "https://twitter.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://www.linkedin.com/company/mintsearch"
-  }
+  ]
 }
